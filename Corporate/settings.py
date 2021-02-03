@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -121,3 +121,50 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = (
+    BASE_DIR / 'base/static',
+    BASE_DIR / 'static',
+)
+MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = 'staticfiles/static'
+
+
+
+
+
+## Logs
+LOGGING = {'version': 1,
+           'disable_existing_loggers': False,
+           'formatters': {
+               'console': {
+                   'format': '%(name)-12s %(levelname)-8s %(message)s'
+               },
+               'file': {
+                   'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+               }
+           },
+           'handlers': {
+               'console': {
+                   'class': 'logging.StreamHandler',
+                   'formatter': 'console'
+               },
+               'file': {
+                   'level': 'DEBUG',
+                   'class': 'logging.FileHandler',
+                   'formatter': 'file',
+                   'filename': BASE_DIR / 'zTemp/logs/Corporate.log'
+               }
+           },
+           'loggers': {
+               '': {
+                   'level': 'DEBUG',
+                   'handlers': ['console', 'file']
+               }
+           },
+           'celery': {
+               'handlers': ['console'],
+               'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+           },
+           }
