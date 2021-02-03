@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
-def home(request):
-    return None
+def index(request):
+    return render(request, template_name='base/index.html')
