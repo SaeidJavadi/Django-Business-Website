@@ -12,10 +12,10 @@
                 <ul class="navbar-nav">
                     <li><a class="nav-link" href="#">ارتباط با ما</a></li>
                     <li><a class="nav-link" href="#">بلاگ</a></li>
-                    <li><a class="nav-link" href="#">درباره ما</a></li>
-                    <li><a class="nav-link" href="#">سرویس ها</a></li>
+                    <li><a class="nav-link" href="{% url 'base:about' %}">درباره ما</a></li>
+                    <li><a class="nav-link" href="{% url 'base:services' %}">سرویس ها</a></li>
                     <li><a class="nav-link active" href="{% url 'base:index' %}">صفحه اصلی</a></li>
-                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="#">پنل مدیریت</a></li>
+                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="admin/">پنل مدیریت</a></li>
                 </ul>
             </div>
             <div class="search-box">
