@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- Start Banner -->
+<div class="section inner_page_header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="full" style="text-align: right;direction: rtl">
+                    <h3>ارتباط با ما</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Banner -->
+
+<!-- section -->
+<div class="section layout_padding">
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full" style="direction: rtl;text-align: right;float: right;display: block">
+                    <div class="heading_main text_align_left">
+                        <div class="left">
+                            <p class="section_count">01</p>
+                        </div>
+                        <div class="right">
+                            <p class="small_tag">ارتباط با ما</p>
+                            <h2><span class="theme_color">چگونه می توان</span>  ابزاری را ارائه داد که به هرکسی کمک می کند تا ایده خود را صدا کند</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top_30">
+
+            <div class="col-lg-5 col-sm-5 col-xs-12 margin-top_30" style="direction: rtl; text-align: right">
+                <div class="left-contact">
+                    <div class="media cont-line">
+                        <div class="media-left icon-b">
+                            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body dit-right">
+                            <h4>آدرس</h4>
+                            <p>ایران رشت</p>
+                        </div>
+                    </div>
+                    <div class="media cont-line">
+                        <div class="media-left icon-b">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body dit-right">
+                            <h4>ایمیل</h4>
+                            <a href="#">demoinfo@gmail.com</a><br>
+                            <a href="#">demoinfo@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="media cont-line">
+                        <div class="media-left icon-b">
+                            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body dit-right">
+                            <h4>شماره تماس</h4>
+                            <a href="#">12345 67890</a><br>
+                            <a href="#">12345 67890</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-sm-7 col-xs-12 margin-top_30" style="direction: rtl">
+                <div class="contact-block">
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="نام شما" required data-error="لطفا نا خود را وارد کنید">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" placeholder="ایمیل شما" id="email" class="form-control" name="name" required data-error="لطفا ایمیل خود را وارد کنید">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" placeholder="شماره تماس شما" id="number" class="form-control" name="number" required data-error="لطفا شماره خود را وارد کنید">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="message" placeholder="پیام شما" rows="8" data-error="پیام خود را بنویسید" required></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="submit-button text-center">
+                                    <button class="btn btn-common" id="submit" type="submit">ارسال پیام</button>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<!-- end section -->
+
+{% endblock body %}

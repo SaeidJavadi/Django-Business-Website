@@ -37,7 +37,13 @@
 </head>
 <body class="inner_page" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
 {% include 'partials/header.html' %}
-
+<!-- LOADER -->
+<div id="preloader">
+    <div class="loader">
+        <img src="{% static 'root/img/loader.gif' %}" alt="#"/>
+    </div>
+</div>
+<!-- end loader -->
 {% block body %}
 {% endblock body %}
 

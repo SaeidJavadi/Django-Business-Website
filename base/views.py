@@ -10,3 +10,7 @@ def about(request):
 
 def services(request):
     return render(request, template_name='base/services.html',context={})
+
+
+def contact(request):
+    return render(request, template_name='base/contact.html', context={})
