@@ -1758,7 +1758,7 @@ p.section_count {
 }
 
 .heading_main {
-    float: left;
+    float: right;
     display: flex;
 }
 
