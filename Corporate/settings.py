@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'accounts.apps.AccountsConfig',
     'base.apps.BaseConfig',
 ]
 
@@ -103,6 +104,8 @@ STATICFILES_DIRS = (
 )
 MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_ROOT = 'staticfiles/static'
+
+AUTH_USER_MODEL = 'accounts.User'
 
 ## Logs
 LOGGING = {'version': 1,
