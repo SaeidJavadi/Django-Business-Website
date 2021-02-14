@@ -1,51 +1,51 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
-
+from django.utils.translation import gettext_lazy as _
 from accounts.models import User
 
 
-class RegisterUserForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('email', 'full_name', 'dateofbirth', 'phone', 'password')
+# class RegisterUserForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ('email', 'full_name', 'dateofbirth', 'phone', 'password')
+#
+#         widgets = {
+#             # 'email':forms.EmailField(),
+#             'phone': forms.NumberInput(),
+#             'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password', }),
+#         }
+#         # labels = {
+#         #     'password':'رمز عبور',
+#         # }
+#
+#     def save(self, commit=True):
+#         user = super().save(commit=False)
+#         user.set_password(self.cleaned_data["password"])
+#         if commit:
+#             user.save()
+#         return user
 
-        widgets = {
-            # 'email':forms.EmailField(),
-            'phone': forms.NumberInput(),
-            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password', }),
-        }
-        # labels = {
-        #     'password':'رمز عبور',
-        # }
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password"])
-        if commit:
-            user.save()
-        return user
-
-
-class RegisterFormAdmin(RegisterUserForm):
-    class Meta:
-        widgets = {
-            # 'email':forms.EmailField(),
-            'phone': forms.NumberInput(
-                attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
-                       'minlength': '11'}),
-            'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام و نام خانواگی', }),
-            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password', }),
-        }
+# class RegisterFormAdmin(RegisterUserForm):
+#     class Meta:
+#         widgets = {
+#             # 'email':forms.EmailField(),
+#             'phone': forms.NumberInput(
+#                 attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
+#                        'minlength': '11'}),
+#             'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام و نام خانواگی', }),
+#             'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password', }),
+#         }
 
 
 class UserCreationForm(forms.ModelForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_('Password confirmation'), widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('email', 'full_name', 'dateofbirth', 'phone')
+        fields = ('email', 'full_name', 'dateofbirth', 'phone', 'is_active', 'is_admin')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -65,9 +65,6 @@ class UserCreationForm(forms.ModelForm):
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
-    # labels = {
-    #     'password':'رمز عبور'
-    # }
     class Meta:
         model = User
         fields = ('email', 'full_name', 'dateofbirth', 'phone', 'is_active', 'is_admin')

@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-14 20:32+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/admin.py:14
+msgid "main"
+msgstr "اصلی"
+
+#: accounts/admin.py:14 accounts/forms.py:42
+msgid "Password"
+msgstr "رمزعبور"
+
+#: accounts/admin.py:15
+msgid "Personal Info"
+msgstr "اطلاعات شخصی"
+
+#: accounts/admin.py:16
+msgid "Permissions"
+msgstr "مجوزها"
+
+#: accounts/apps.py:7
+msgid "Accounts"
+msgstr "حساب های کاربری"
+
+#: accounts/forms.py:43
+msgid "Password confirmation"
+msgstr "تایید رمزعبور"
+
+#: accounts/managers.py:8
+msgid "Users must have an email "
+msgstr "کاربران باید حتما ایمیل داشته باشند"
+
+#: accounts/managers.py:10
+msgid "Name must be entered"
+msgstr "نام و نام خانوادگی باید وارد شود"
+
+#: accounts/managers.py:12
+msgid "Mobile number must be entered"
+msgstr "شماره موبایل باید وارد شود"
+
+#: accounts/managers.py:14
+msgid "Date of birth must be entered"
+msgstr "تاریخ تولد باید وارد شود"
+
+#: accounts/models.py:7
+msgid "Email"
+msgstr "ایمیل"
+
+#: accounts/models.py:8
+msgid "First And Last Name"
+msgstr "نام و نام خانوادگی"
+
+#: accounts/models.py:9
+msgid "Date Of Birth"
+msgstr "تاریخ تولد"
+
+#: accounts/models.py:10
+msgid "Phone Number"
+msgstr "شماره موبایل"
+
+#: accounts/models.py:11
+msgid "is Admin"
+msgstr "دسترسی مدیر"
+
+#: accounts/models.py:12
+msgid "is Active"
+msgstr "فعال"
+
+#: accounts/models.py:34
+msgid "User"
+msgstr "کاربر"
+
+#: accounts/models.py:35
+msgid "Users"
+msgstr "کاربران"
