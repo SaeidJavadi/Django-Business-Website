@@ -12,7 +12,7 @@ class UserManager(BaseUserManager):
         # if not dateofbirth:
         #     raise ValueError('تاریخ تولد باید وارد شود')
 
-        user = self.model(email=email, full_name=full_name, phone=phone)
+        user = self.model(email=self.normalize_email(email), full_name=full_name, phone=phone)
         user.set_password(password)
         user.save(using=self._db)
         return user
