@@ -7,7 +7,8 @@ class User(AbstractBaseUser):
     email = models.EmailField(max_length=120, unique=True, verbose_name=_('Email'))
     full_name = models.CharField(max_length=120, verbose_name=_('First And Last Name'))
     dateofbirth = models.DateField(verbose_name=_('Date Of Birth'))
-    phone = models.IntegerField(verbose_name=_('Phone Number'))
+    phone = models.IntegerField(verbose_name=_('Phone Number'), unique=True)
+    idcode = models.IntegerField(max_length=10, verbose_name=_('ID Code'), unique=True)
     is_admin = models.BooleanField(default=False, verbose_name=_('is Admin'))
     is_active = models.BooleanField(default=True, verbose_name=_('is Active'))
 
