@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, full_name, dateofbirth, phone, password):
+    def create_user(self, email, full_name, dateofbirth, phone, idcode, password):
         if not email:
             raise ValueError(_('Users must have an email '))
         if not full_name:
@@ -12,14 +12,17 @@ class UserManager(BaseUserManager):
             raise ValueError(_('Mobile number must be entered'))
         if not dateofbirth:
             raise ValueError(_('Date of birth must be entered'))
+        if not idcode:
+            raise ValueError(_('ID Code must be entered'))
 
-        user = self.model(email=self.normalize_email(email), full_name=full_name, phone=phone, dateofbirth=dateofbirth)
+        user = self.model(email=self.normalize_email(email), full_name=full_name, phone=phone, dateofbirth=dateofbirth,
+                          idcode=idcode)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, full_name, phone, password, dateofbirth):
-        user = self.create_user(email=email, full_name=full_name, dateofbirth=dateofbirth, phone=phone,
+    def create_superuser(self, email, full_name, phone, idcode, password, dateofbirth):
+        user = self.create_user(email=email, full_name=full_name, dateofbirth=dateofbirth, phone=phone, idcode=idcode,
                                 password=password)
         user.is_admin = True
         user.save(using=self._db)

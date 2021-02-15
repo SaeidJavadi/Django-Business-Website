@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-14 20:32+0330\n"
+"POT-Creation-Date: 2021-02-15 19:29+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,10 +22,6 @@ msgstr ""
 msgid "main"
 msgstr "اصلی"
 
-#: accounts/admin.py:14 accounts/forms.py:42
-msgid "Password"
-msgstr "رمزعبور"
-
 #: accounts/admin.py:15
 msgid "Personal Info"
 msgstr "اطلاعات شخصی"
@@ -38,9 +34,17 @@ msgstr "مجوزها"
 msgid "Accounts"
 msgstr "حساب های کاربری"
 
-#: accounts/forms.py:43
+#: accounts/forms.py:43 accounts/forms.py:78
+msgid "Password"
+msgstr "رمزعبور"
+
+#: accounts/forms.py:44
 msgid "Password confirmation"
 msgstr "تایید رمزعبور"
+
+#: accounts/forms.py:77 accounts/models.py:7
+msgid "Email"
+msgstr "ایمیل"
 
 #: accounts/managers.py:8
 msgid "Users must have an email "
@@ -58,9 +62,11 @@ msgstr "شماره موبایل باید وارد شود"
 msgid "Date of birth must be entered"
 msgstr "تاریخ تولد باید وارد شود"
 
-#: accounts/models.py:7
-msgid "Email"
-msgstr "ایمیل"
+#: accounts/managers.py:16
+#, fuzzy
+#| msgid "Name must be entered"
+msgid "ID Code must be entered"
+msgstr "نام و نام خانوادگی باید وارد شود"
 
 #: accounts/models.py:8
 msgid "First And Last Name"
@@ -75,17 +81,53 @@ msgid "Phone Number"
 msgstr "شماره موبایل"
 
 #: accounts/models.py:11
+msgid "ID Code"
+msgstr "کد ملی"
+
+#: accounts/models.py:12
 msgid "is Admin"
 msgstr "دسترسی مدیر"
 
-#: accounts/models.py:12
+#: accounts/models.py:13
 msgid "is Active"
 msgstr "فعال"
 
-#: accounts/models.py:34
+#: accounts/models.py:35
 msgid "User"
 msgstr "کاربر"
 
-#: accounts/models.py:35
+#: accounts/models.py:36
 msgid "Users"
 msgstr "کاربران"
+
+#: accounts/templates/accounts/login.html:13
+msgid "Login Form"
+msgstr "فرم ورود"
+
+#: accounts/templates/accounts/login.html:21
+msgid "We'll never share your phone number with anyone else."
+msgstr "ما هرگز اطلاعات حساب شما را با بقیه به اشتراک نمی گذاریم."
+
+#: accounts/templates/accounts/login.html:24
+msgid "Forget Your Password?"
+msgstr "رمزتان را فراموش کرده اید؟"
+
+#: accounts/templates/accounts/login.html:26
+msgid "Login"
+msgstr "ورود"
+
+#: accounts/views.py:20
+msgid "logged in successfully"
+msgstr "با موفقیت وارد شدید"
+
+#: accounts/views.py:23
+msgid "your Email Or Password is wrong"
+msgstr "ایمیل یا رمز ورود شما اشتباه است"
+
+#: accounts/views.py:25
+msgid "No account created with this email"
+msgstr "هیچ حسابی با این ایمیل ایجاد نشده است"
+
+#: accounts/views.py:29
+msgid "Please enter your information correctly"
+msgstr "لطفا اطلاعات خود را به درستی وارد کنید"

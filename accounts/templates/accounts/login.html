@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block body %}
+    <section class="bg-texture">
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col" style="margin: 20px 0 20px 0;">
+                    <div class="animated rubberBand"
+                         style="background: #1f1f1f; border-radius: 5px; padding: 20px; color: #ffffff;">
+                        <div dir="rtl" style="text-align: right">
+                            <h3 class="text-center" style="color: #ff00f2">{% trans 'Login Form' %}</h3>
+                            <hr class="border-color: #ffffff;"/>
+
+                            <form method="post" novalidate>
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ form.as_p }}
+                                    <small id="emailHelp" class="form-text text-muted" dir="rtl">
+                                        {% trans "We'll never share your phone number with anyone else." %}
+                                    </small>
+                                    <small> <a class="login-link" style="color: #4c6485"
+                                               href="#">{% trans 'Forget Your Password?' %}</a></small>
+                                </div>
+                                <button type="submit" class="btn btn-info btn-block">{% trans "Login" %}</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

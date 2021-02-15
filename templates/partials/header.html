@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <header class="top-header">
     <nav class="navbar header-nav navbar-expand-lg">
         <div class="container-fluid">
@@ -15,7 +16,9 @@
                     <li><a class="nav-link" href="{% url 'base:about' %}">درباره ما</a></li>
                     <li><a class="nav-link" href="{% url 'base:services' %}">سرویس ها</a></li>
                     <li><a class="nav-link active" href="{% url 'base:index' %}">صفحه اصلی</a></li>
-                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="admin/">پنل مدیریت</a></li>
+                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="{% url 'accounts:login' %}">{% trans 'Sign in' %}</a></li>
+                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="{% url 'accounts:login' %}">{% trans 'Sign up' %}</a></li>
+                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="/admin">admin</a></li>
                 </ul>
             </div>
             <div class="search-box">

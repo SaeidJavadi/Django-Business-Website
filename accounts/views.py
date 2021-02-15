@@ -1,24 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from accounts.forms import LoginForm
 from django.utils.translation import gettext_lazy as _
-from accounts.forms import LoginForm
+from django.contrib import messages
+from accounts.models import User
 
 
-# Create your views here.
-def LoginPage(request):
+def userLogin(request):
     if request.method == 'POST':
-        global code, phone
         form = LoginForm(request.POST)
         if form.is_valid():
-            phone = form.cleaned_data['phone']
-            if User.objects.filter(phone=phone).exists():
-                request.session['phone'] = f"0{phone}"
-                return redirect('accounts:verify')
+            cd = form.cleaned_data
+            if User.objects.filter(email=cd['email']).exists():
+                user = authenticate(request, username=cd['email'], password= cd['password'])
+                if user is not None:
+                    login(request, user)
+                    messages.success(request, _('logged in successfully'), 'success')
+                    return redirect('base:index')
+                else:
+                    messages.error(request, _('your Email Or Password is wrong'), 'warning')
             else:
-                messages.error(request, _('در ارسال رمزعبور مشکلی پیش آمده است، لطفا لحظات دیگری تلاش کنید'),
+                messages.error(request, _('No account created with this email'),
                                'warning')
                 return redirect('accounts:login')
+        else:
+            messages.error(request, _('Please enter your information correctly'), 'warning')
     else:
-        form = PhoneLoginForm()
+        form = LoginForm()
     return render(request, 'accounts/login.html', {'form': form})

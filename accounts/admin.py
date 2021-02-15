@@ -9,15 +9,15 @@ from django.utils.translation import gettext_lazy as _
 class UsersAdmin(BaseUserAdmin):
     form = UserChangeForm
     form_add = UserCreationForm
-    list_display = ('email', 'full_name', 'phone','is_admin')
+    list_display = ('email', 'full_name', 'phone', 'is_admin')
     fieldsets = (
         (_('main'), {'fields': ('email', 'password')}),
-        (_('Personal Info'), {'fields': ('phone', 'full_name', 'dateofbirth')}),
+        (_('Personal Info'), {'fields': ('phone', 'full_name', 'idcode', 'dateofbirth')}),
         (_('Permissions'), {'fields': ('is_active', 'is_admin')})
     )
 
     add_fieldsets = (
-        (None, {'fields': ('email', 'full_name', 'dateofbirth', 'phone', 'password1', 'password2')}),
+        (None, {'fields': ('email', 'full_name', 'dateofbirth', 'phone','idcode', 'password1', 'password2')}),
     )
     search_fields = ('email', 'full_name',)
     ordering = ('phone',)
