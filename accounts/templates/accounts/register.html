@@ -1,38 +1,41 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-    {% trans 'Login Form' %}
+    {% trans "Register Form" %}
 {% endblock title %}
 {% block body %}
     <section class="bg-texture">
-        <div class="container">
             <div class="row">
-                <div class="col"></div>
-                <div class="col" style="margin: 20px 0 20px 0;">
+                <div class="col-xl-4 col-sm-2"></div>
+                <div class="col-xl-4 col-sm-8" style="margin: 20px 0 20px 0;">
                     <div class="animated rubberBand"
                          style="background: #1f1f1f; border-radius: 5px; padding: 20px; color: #ffffff;">
                         <div dir="rtl" style="text-align: right">
-                            <h3 class="text-center" style="color: #c82333">{% trans 'Login Form' %}</h3>
+                            <h3 class="text-center" style="color: #c82333">{% trans "Register Form" %}</h3>
                             <hr style="border:1px solid green;border-radius:3px;">
 
                             <form method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
+                                    <label for="username">{% trans "Enter your Specifications" %}:</label>
                                     {{ form.as_p }}
-                                    <small id="emailHelp" class="form-text text-muted" dir="rtl">
+                                    <small id="userHelp" class="form-text text-muted">
                                         {% trans "We'll never share your phone number with anyone else." %}
                                     </small>
-                                    <small> <a class="login-link" style="color: #4c6485"
-                                               href="#">{% trans 'Forget Your Password?' %}</a></small>
                                 </div>
-                                <button type="submit" class="btn btn-info btn-block">{% trans "Login" %}</button>
+                                <button type="submit" class="btn btn-info btn-block">{% trans "Register" %}</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
-                <div class="col"></div>
+                <div class="col-xl-4 col-sm-2"></div>
             </div>
-        </div>
     </section>
+
+    {#    <form method="post" action="">#}
+    {#        {{ form.as_table }}#}
+    {#        <input type="submit" value="send">#}
+    {#    </form>#}
+
+
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-15 19:29+0330\n"
+"POT-Creation-Date: 2021-02-15 20:48+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,17 +34,21 @@ msgstr "مجوزها"
 msgid "Accounts"
 msgstr "حساب های کاربری"
 
-#: accounts/forms.py:43 accounts/forms.py:78
+#: accounts/forms.py:45 accounts/forms.py:80 accounts/forms.py:84
 msgid "Password"
 msgstr "رمزعبور"
 
-#: accounts/forms.py:44
+#: accounts/forms.py:46 accounts/forms.py:85
 msgid "Password confirmation"
 msgstr "تایید رمزعبور"
 
-#: accounts/forms.py:77 accounts/models.py:7
+#: accounts/forms.py:79 accounts/models.py:7
 msgid "Email"
 msgstr "ایمیل"
+
+#: accounts/forms.py:115 accounts/models.py:9
+msgid "Date Of Birth"
+msgstr "تاریخ تولد"
 
 #: accounts/managers.py:8
 msgid "Users must have an email "
@@ -72,10 +76,6 @@ msgstr "نام و نام خانوادگی باید وارد شود"
 msgid "First And Last Name"
 msgstr "نام و نام خانوادگی"
 
-#: accounts/models.py:9
-msgid "Date Of Birth"
-msgstr "تاریخ تولد"
-
 #: accounts/models.py:10
 msgid "Phone Number"
 msgstr "شماره موبایل"
@@ -100,34 +100,57 @@ msgstr "کاربر"
 msgid "Users"
 msgstr "کاربران"
 
-#: accounts/templates/accounts/login.html:13
+#: accounts/templates/accounts/login.html:4
+#: accounts/templates/accounts/login.html:15
 msgid "Login Form"
 msgstr "فرم ورود"
 
-#: accounts/templates/accounts/login.html:21
+#: accounts/templates/accounts/login.html:23
+#: accounts/templates/accounts/register.html:23
 msgid "We'll never share your phone number with anyone else."
 msgstr "ما هرگز اطلاعات حساب شما را با بقیه به اشتراک نمی گذاریم."
 
-#: accounts/templates/accounts/login.html:24
+#: accounts/templates/accounts/login.html:26
 msgid "Forget Your Password?"
 msgstr "رمزتان را فراموش کرده اید؟"
 
-#: accounts/templates/accounts/login.html:26
+#: accounts/templates/accounts/login.html:28
 msgid "Login"
 msgstr "ورود"
 
-#: accounts/views.py:20
+#: accounts/templates/accounts/register.html:4
+#: accounts/templates/accounts/register.html:14
+msgid "Register Form"
+msgstr "فرم ثبت نام"
+
+#: accounts/templates/accounts/register.html:20
+msgid "Enter your Specifications"
+msgstr "مشخصات خود را وارد کنید"
+
+#: accounts/templates/accounts/register.html:26
+msgid "Register"
+msgstr "ثبت نام"
+
+#: accounts/views.py:18
 msgid "logged in successfully"
 msgstr "با موفقیت وارد شدید"
 
-#: accounts/views.py:23
+#: accounts/views.py:21
 msgid "your Email Or Password is wrong"
 msgstr "ایمیل یا رمز ورود شما اشتباه است"
 
-#: accounts/views.py:25
+#: accounts/views.py:23
 msgid "No account created with this email"
 msgstr "هیچ حسابی با این ایمیل ایجاد نشده است"
 
-#: accounts/views.py:29
+#: accounts/views.py:27
 msgid "Please enter your information correctly"
 msgstr "لطفا اطلاعات خود را به درستی وارد کنید"
+
+#: accounts/views.py:42
+msgid "you registered successfully"
+msgstr "حساب شما با موفقیت ایجاد شد"
+
+#: accounts/views.py:51
+msgid "you logged out successfully"
+msgstr "با موفقیت خارج شدید"

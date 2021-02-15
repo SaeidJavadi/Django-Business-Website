@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from accounts.forms import LoginForm
+from accounts.forms import LoginForm, RegisterForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from accounts.models import User
@@ -12,7 +12,7 @@ def userLogin(request):
         if form.is_valid():
             cd = form.cleaned_data
             if User.objects.filter(email=cd['email']).exists():
-                user = authenticate(request, username=cd['email'], password= cd['password'])
+                user = authenticate(request, username=cd['email'], password=cd['password'])
                 if user is not None:
                     login(request, user)
                     messages.success(request, _('logged in successfully'), 'success')
@@ -28,3 +28,25 @@ def userLogin(request):
     else:
         form = LoginForm()
     return render(request, 'accounts/login.html', {'form': form})
+
+
+def userRegister(request):
+    form = RegisterForm()
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = User.objects.create_user(email=cd['email'], full_name=cd['full_name'], dateofbirth=cd['dateofbirth'],
+                                            phone=cd['phone'], idcode=cd['idcode'], password=cd['password1'])
+            user.save()
+            messages.success(request, _('you registered successfully'), 'success')
+            return redirect('base:index')
+        else:
+            form = RegisterForm()
+    return render(request, 'accounts/register.html', {'form': form})
+
+
+def LogoutPage(request):
+    logout(request)
+    messages.success(request, _('you logged out successfully'), 'success')
+    return redirect('base:index')

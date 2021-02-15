@@ -3,6 +3,8 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from accounts.models import User
+from pytz import timezone
+from jdatetime import datetime as dt
 
 
 # class RegisterUserForm(forms.ModelForm):
@@ -45,7 +47,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'full_name', 'dateofbirth', 'phone','idcode', 'is_active', 'is_admin')
+        fields = ('email', 'full_name', 'dateofbirth', 'phone', 'idcode', 'is_active', 'is_admin')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -74,8 +76,54 @@ class UserChangeForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}), label=_('Email'))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}), label=_('Password'))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), label=_('Email'))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label=_('Password'))
 
 
+class RegisterForm(forms.ModelForm):
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label=_('Password confirmation'), widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
+    class Meta:
+        model = User
+        fields = ('email', 'full_name', 'dateofbirth', 'phone', 'idcode')
+
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={'class': 'form-control', 'placeholder': 'example@site.com'}),
+            'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
+                       'minlength': '11'}),
+            'idcode': forms.NumberInput(
+                attrs={'class': 'form-control', 'type': 'tel', 'maxlength': '10', 'minlength': '10'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(RegisterForm, self).__init__(*args, **kwargs)
+        tz = timezone('Asia/Tehran')
+        timDel = dt.now(tz)
+        # DateNow = timDel.strftime("%Y/%m/%d %H:%M:%S")
+        YearNow = int(timDel.strftime("%Y"))
+        YEAR_CHOICES = range(YearNow, 1249, -1)
+        MONTH_CHOICES = {1: 'فروردین', 2: 'اردیبهشت', 3: 'خرداد', 4: 'تیر', 5: 'مرداد', 6: 'شهریور', 7: 'مهر',
+                         8: 'آبان', 9: 'آذر', 10: 'دی', 11: 'بهمن', 12: 'اسفند'}
+        self.fields['dateofbirth'] = forms.DateField(required=True,
+                                                     widget=forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'],
+                                                                                   years=YEAR_CHOICES,
+                                                                                   months=MONTH_CHOICES),
+                                                     label=_('Date Of Birth'))
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise ValidationError("Passwords don't match")
+        return password2
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        if commit:
+            user.save()
+        return user

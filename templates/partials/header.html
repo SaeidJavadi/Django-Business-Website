@@ -16,8 +16,17 @@
                     <li><a class="nav-link" href="{% url 'base:about' %}">درباره ما</a></li>
                     <li><a class="nav-link" href="{% url 'base:services' %}">سرویس ها</a></li>
                     <li><a class="nav-link active" href="{% url 'base:index' %}">صفحه اصلی</a></li>
-                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="{% url 'accounts:login' %}">{% trans 'Sign in' %}</a></li>
-                    <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="{% url 'accounts:login' %}">{% trans 'Sign up' %}</a></li>
+
+                    {% if not request.user.is_authenticated %}
+                        <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="{% url 'accounts:login' %}">{% trans 'Sign in' %}</a></li>
+                        <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="{% url 'accounts:register' %}">{% trans 'Sign up' %}</a></li>
+                    {% else %}
+                        <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
+{#                        <a href="{% url ':dashboard' %}">#}
+{#                            <button class="btn btn-success"#}
+{#                                    style="margin-left: 4px;">{% trans "Dashboard" %}</button>#}
+{#                        </a>#}
+                    {% endif %}
                     <li><a class="nav-link active" style="background:#f2184f;color:#fff;" href="/admin">admin</a></li>
                 </ul>
             </div>
