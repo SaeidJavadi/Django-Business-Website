@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-15 20:48+0330\n"
+"POT-Creation-Date: 2021-02-16 20:20+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,19 +34,23 @@ msgstr "مجوزها"
 msgid "Accounts"
 msgstr "حساب های کاربری"
 
-#: accounts/forms.py:45 accounts/forms.py:80 accounts/forms.py:84
+#: accounts/forms.py:45 accounts/forms.py:84 accounts/forms.py:88
 msgid "Password"
 msgstr "رمزعبور"
 
-#: accounts/forms.py:46 accounts/forms.py:85
+#: accounts/forms.py:46 accounts/forms.py:89
 msgid "Password confirmation"
 msgstr "تایید رمزعبور"
 
-#: accounts/forms.py:79 accounts/models.py:7
+#: accounts/forms.py:81 accounts/forms.py:137 accounts/models.py:7
 msgid "Email"
 msgstr "ایمیل"
 
-#: accounts/forms.py:115 accounts/models.py:9
+#: accounts/forms.py:99 accounts/models.py:8
+msgid "First And Last Name"
+msgstr "نام و نام خانوادگی"
+
+#: accounts/forms.py:120 accounts/models.py:9
 msgid "Date Of Birth"
 msgstr "تاریخ تولد"
 
@@ -67,14 +71,8 @@ msgid "Date of birth must be entered"
 msgstr "تاریخ تولد باید وارد شود"
 
 #: accounts/managers.py:16
-#, fuzzy
-#| msgid "Name must be entered"
 msgid "ID Code must be entered"
-msgstr "نام و نام خانوادگی باید وارد شود"
-
-#: accounts/models.py:8
-msgid "First And Last Name"
-msgstr "نام و نام خانوادگی"
+msgstr "کدملی باید وارد شود"
 
 #: accounts/models.py:10
 msgid "Phone Number"
@@ -99,6 +97,18 @@ msgstr "کاربر"
 #: accounts/models.py:36
 msgid "Users"
 msgstr "کاربران"
+
+#: accounts/templates/accounts/forget.html:12
+msgid "Forget password"
+msgstr "فراموشی رمزعبور"
+
+#: accounts/templates/accounts/forget.html:20
+msgid "Enter an email you forgot your password to"
+msgstr "ایمیلی که رمز آن را فراموش کرده اید را وارد کنید"
+
+#: accounts/templates/accounts/forget.html:24
+msgid "Reset Password"
+msgstr "ریست رمزعبور"
 
 #: accounts/templates/accounts/login.html:4
 #: accounts/templates/accounts/login.html:15

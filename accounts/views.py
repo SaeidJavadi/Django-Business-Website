@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from accounts.forms import LoginForm, RegisterForm
+from accounts.forms import LoginForm, RegisterForm, ForgetForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from accounts.models import User
@@ -36,6 +36,7 @@ def userRegister(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            print(cd['dateofbirth'])
             user = User.objects.create_user(email=cd['email'], full_name=cd['full_name'], dateofbirth=cd['dateofbirth'],
                                             phone=cd['phone'], idcode=cd['idcode'], password=cd['password1'])
             user.save()
@@ -50,3 +51,12 @@ def LogoutPage(request):
     logout(request)
     messages.success(request, _('you logged out successfully'), 'success')
     return redirect('base:index')
+
+
+def ForgetPage(request):
+    if request.method == 'POST':
+        form = ForgetForm(request.POST)
+        pass
+    else:
+        form = ForgetForm()
+    return render(request, 'accounts/forget.html', {'form': form})

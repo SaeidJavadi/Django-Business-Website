@@ -76,13 +76,21 @@ class UserChangeForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), label=_('Email'))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label=_('Password'))
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email', 'dir': 'ltr'}),
+        label=_('Email'))
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password', 'dir': 'ltr'}),
+        label=_('Password'))
 
 
 class RegisterForm(forms.ModelForm):
-    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    password2 = forms.CharField(label=_('Password confirmation'), widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password', 'dir': 'ltr'}))
+    password2 = forms.CharField(label=_('Password confirmation'),
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-control', 'placeholder': 'Password Confirmation',
+                                           'dir': 'ltr'}))
 
     class Meta:
         model = User
@@ -90,13 +98,13 @@ class RegisterForm(forms.ModelForm):
 
         widgets = {
             'email': forms.EmailInput(
-                attrs={'class': 'form-control', 'placeholder': 'example@site.com'}),
-            'full_name': forms.TextInput(attrs={'class': 'form-control'}),
+                attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}),
+            'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('First And Last Name')}),
             'phone': forms.NumberInput(
                 attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
-                       'minlength': '11'}),
+                       'minlength': '11', 'dir': 'ltr'}),
             'idcode': forms.NumberInput(
-                attrs={'class': 'form-control', 'type': 'tel', 'maxlength': '10', 'minlength': '10'}),
+                attrs={'class': 'form-control', 'type': 'tel','placeholder':'1234567890', 'maxlength': '10', 'minlength': '10', 'dir': 'ltr'}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -105,7 +113,7 @@ class RegisterForm(forms.ModelForm):
         timDel = dt.now(tz)
         # DateNow = timDel.strftime("%Y/%m/%d %H:%M:%S")
         YearNow = int(timDel.strftime("%Y"))
-        YEAR_CHOICES = range(YearNow, 1249, -1)
+        YEAR_CHOICES = range(YearNow, 1310, -1)
         MONTH_CHOICES = {1: 'فروردین', 2: 'اردیبهشت', 3: 'خرداد', 4: 'تیر', 5: 'مرداد', 6: 'شهریور', 7: 'مهر',
                          8: 'آبان', 9: 'آذر', 10: 'دی', 11: 'بهمن', 12: 'اسفند'}
         self.fields['dateofbirth'] = forms.DateField(required=True,
@@ -127,3 +135,8 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class ForgetForm(forms.Form):
+    email = forms.EmailField(label=_('Email'), widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}))

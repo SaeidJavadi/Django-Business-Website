@@ -12,7 +12,7 @@
                     <div class="animated rubberBand"
                          style="background: #1f1f1f; border-radius: 5px; padding: 20px; color: #ffffff;">
                         <div dir="rtl" style="text-align: right">
-                            <h3 class="text-center" style="color: #c82333">{% trans 'Login Form' %}</h3>
+                            <h3 class="text-center" style="color: #36ff00"><b>{% trans 'Login Form' %}</b></h3>
                             <hr style="border:1px solid green;border-radius:3px;">
 
                             <form method="post">
@@ -23,7 +23,7 @@
                                         {% trans "We'll never share your phone number with anyone else." %}
                                     </small>
                                     <small> <a class="login-link" style="color: #4c6485"
-                                               href="#">{% trans 'Forget Your Password?' %}</a></small>
+                                               href="{% url 'accounts:forget' %}">{% trans 'Forget Your Password?' %}</a></small>
                                 </div>
                                 <button type="submit" class="btn btn-info btn-block">{% trans "Login" %}</button>
                             </form>
