@@ -86,26 +86,29 @@ class LoginForm(forms.Form):
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'placeholder': 'Password', 'dir': 'ltr'}))
+        attrs={'class': 'form-control', 'placeholder': 'Password', 'dir': 'ltr', 'onChange': 'onChange()'}))
     password2 = forms.CharField(label=_('Password confirmation'),
                                 widget=forms.PasswordInput(
-                                    attrs={'class': 'form-control', 'placeholder': 'Password Confirmation',
-                                           'dir': 'ltr'}))
+                                    attrs={'class': 'form-control', 'placeholder': 'Re-Enter Password',
+                                           'dir': 'ltr', 'onChange': 'onChange()'}))
 
     class Meta:
         model = User
         fields = ('email', 'full_name', 'dateofbirth', 'phone', 'idcode')
 
         widgets = {
+            # 'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr', 'oninvalid':"setCustomValidity('لطفا ادرس ایمیل خود را وارد کنید')"}),
             'email': forms.EmailInput(
                 attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}),
-            'full_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('First And Last Name')}),
+            'full_name': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': _('First And Last Name'), 'invalid': 'fuulNameJS()', 'lang':'fa'}),
             'phone': forms.NumberInput(
                 attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
-                       'minlength': '11', 'dir': 'ltr'}),
+                       'minlength': '11', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
             'idcode': forms.NumberInput(
-                attrs={'class': 'form-control', 'type': 'tel','placeholder':'1234567890', 'maxlength': '10', 'minlength': '10', 'dir': 'ltr'}),
-        }
+                attrs={'class': 'form-control', 'type': 'tel', 'placeholder': '1234567890', 'maxlength': '10',
+                       'minlength': '10', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
+                       }
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
@@ -127,7 +130,8 @@ class RegisterForm(forms.ModelForm):
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
             raise ValidationError("Passwords don't match")
-        return password2
+        else:
+            return password2
 
     def save(self, commit=True):
         user = super().save(commit=False)
