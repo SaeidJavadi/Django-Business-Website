@@ -14,7 +14,6 @@
                         <div dir="rtl" style="text-align: right">
                             <h3 class="text-center" style="color: #36ff00"><b>{% trans 'Login Form' %}</b></h3>
                             <hr style="border:1px solid green;border-radius:3px;">
-
                             <form method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
@@ -26,8 +25,11 @@
                                                href="{% url 'accounts:forget' %}">{% trans 'Forget Your Password?' %}</a></small>
                                 </div>
                                 <button type="submit" class="btn btn-info btn-block">{% trans "Login" %}</button>
+                                <p style="text-align: center; color: #00ff0f"><b>{% trans 'OR' %}</b></p>
+                                <a class="btn btn-outline-warning btn-block" href="{% url 'accounts:register' %}">
+                                    {% trans "Sign up" %}
+                                </a>
                             </form>
-
                         </div>
                     </div>
                 </div>

@@ -23,11 +23,9 @@ msgid "Sign in"
 msgstr "ورود"
 
 #: templates/partials/header.html:22
-#, fuzzy
-#| msgid "Sign in"
 msgid "Sign up"
-msgstr "ورود"
+msgstr "ثبت نام"
 
 #: templates/partials/header.html:24
 msgid "Logout"
-msgstr ""
+msgstr "خروج"
