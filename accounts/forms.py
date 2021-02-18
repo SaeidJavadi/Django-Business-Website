@@ -52,7 +52,8 @@ class LoginForm(forms.Form):
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'placeholder': 'Password', 'dir': 'ltr', 'onChange': 'onChange()'}))
+        attrs={'class': 'form-control', 'placeholder': 'Password', 'dir': 'ltr', 'onChange': 'onChange()',
+               'minlength': '8'}))
     password2 = forms.CharField(label=_('Password confirmation'),
                                 widget=forms.PasswordInput(
                                     attrs={'class': 'form-control', 'placeholder': 'Re-Enter Password',
@@ -67,14 +68,15 @@ class RegisterForm(forms.ModelForm):
             'email': forms.EmailInput(
                 attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}),
             'full_name': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': _('First And Last Name'), 'invalid': 'fuulNameJS()', 'lang':'fa'}),
+                attrs={'class': 'form-control', 'placeholder': _('First And Last Name'), 'invalid': 'fuulNameJS()',
+                       'lang': 'fa'}),
             'phone': forms.NumberInput(
                 attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
                        'minlength': '11', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
             'idcode': forms.NumberInput(
                 attrs={'class': 'form-control', 'type': 'tel', 'placeholder': '1234567890', 'maxlength': '10',
                        'minlength': '10', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
-                       }
+        }
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)

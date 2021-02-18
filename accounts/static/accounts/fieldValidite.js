@@ -10,10 +10,24 @@ function isNumber(evt) {
 function onChange() {
     const password = document.querySelector('input[name=password1]');
     const confirm = document.querySelector('input[name=password2]');
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+
+    if(password.value.length >= 8)
+    {
+        password.style.backgroundColor = goodColor;
+    }else {
+        password.style.backgroundColor = badColor;
+        // password.setCustomValidity('رمزعبور باید بیشتر از 8 کاراکتر باشد')
+    }
+
     if (confirm.value === password.value) {
         confirm.setCustomValidity('');
+        confirm.style.backgroundColor = goodColor;
+        password.style.backgroundColor = goodColor;
     } else {
         confirm.setCustomValidity('رمزهای عبور باید یکسان باشند');
+        confirm.style.backgroundColor = badColor;
     }
 }
 

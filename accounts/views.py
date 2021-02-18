@@ -42,8 +42,8 @@ def userRegister(request):
             user.save()
             messages.success(request, _('you registered successfully'), 'success')
             return redirect('base:index')
-        else:
-            form = RegisterForm()
+        # else:
+        #     form = RegisterForm()
     return render(request, 'accounts/register.html', {'form': form})
 
 
@@ -60,3 +60,18 @@ def ForgetPage(request):
     else:
         form = ForgetForm()
     return render(request, 'accounts/forget.html', {'form': form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
