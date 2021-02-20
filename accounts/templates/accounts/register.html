@@ -4,6 +4,9 @@
 {% block title %}
     {% trans "Register Form" %}
 {% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'accounts/css/custom.css' %}">
+{% endblock %}
 {% block body %}
     <section class="bg-texture">
         <div class="row">
@@ -31,7 +34,7 @@
             </div>
             <div class="col-xl-4 col-sm-2"></div>
         </div>
-        <script src="{% static 'accounts/fieldValidite.js' %}" type="text/javascript"></script>
-        <script src="{% static 'accounts/FarsiType.js' %}" type="text/javascript"></script>
+        <script src="{% static 'accounts/js/fieldValidite.js' %}" type="text/javascript"></script>
+        <script src="{% static 'accounts/js/FarsiType.js' %}" type="text/javascript"></script>
     </section>
 {% endblock %}
