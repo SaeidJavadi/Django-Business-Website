@@ -6,14 +6,7 @@ STATUS_CHOICES = (
     ('inactive', _('inactive')),
 )
 
-image_dir  = '..\media\pictures'
-
-class Pictures(models.Model):
-    pic = models.ImageField(verbose_name=_('Picture'), upload_to=image_dir)
-
-    class Meta:
-        verbose_name = _('Picture')
-        verbose_name_plural = _('Pictures')
+image_dir = r'..\media\pictures'
 
 
 class About(models.Model):
@@ -34,9 +27,44 @@ class About(models.Model):
     def __str__(self):
         return self.head1
 
+
+class AboutPic(models.Model):
+    about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='about_pic')
+    pic = models.ImageField(verbose_name=_('About Picture'), upload_to=image_dir)
+
+    class Meta:
+        verbose_name = _('About Picture')
+        verbose_name_plural = _('About Pictures')
+
+    def __str__(self):
+        return self.about.head1
+
+
+class TeamInfo(models.Model):
+    name = models.CharField(max_length=120, verbose_name=_('Name'))
+    bio = models.CharField(max_length=200, verbose_name=_('Bio'))
+    img = models.ImageField(verbose_name=_('Profile Inmage'), upload_to=image_dir + r'\profile')
+    fb = models.CharField(max_length=200, verbose_name=_('Facebook link'))
+    twitter = models.CharField(max_length=200, verbose_name=_('twitter link'))
+    ln = models.CharField(max_length=200, verbose_name=_('LinkedIn link'))
+    google = models.CharField(max_length=200, verbose_name=_('G+ link'))
+
+    class Meta:
+        verbose_name = _('Team Info')
+        verbose_name_plural = _('Teams Info')
+
+    def __str__(self):
+        return self.name
+
+
 class ServiceHead(models.Model):
     head1 = models.CharField(max_length=200, verbose_name=_('Head 1'))
     head2 = models.CharField(max_length=200, verbose_name=_('Head 2'))
+    proj_total = models.IntegerField(verbose_name=_('Total Projects'))
+    proj_done = models.IntegerField(verbose_name=_('Projects Done'))
+    img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir)
+    img_head = models.CharField(max_length=200, verbose_name=_('Image Head'))
+    img_text = models.TextField(verbose_name=_('Image Text'))
 
     class Meta:
         verbose_name = _('Service Page')
@@ -45,8 +73,9 @@ class ServiceHead(models.Model):
     def __str__(self):
         return self.head1
 
+
 class Services(models.Model):
-    avator = models.ImageField(verbose_name=_('Avator'),upload_to=image_dir)
+    avator = models.ImageField(verbose_name=_('Avator'), upload_to=image_dir)
     head_service = models.CharField(max_length=120, verbose_name=_('Service Head'))
     text_service = models.TextField(verbose_name=_('Text Service'))
     status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='active')
@@ -57,6 +86,7 @@ class Services(models.Model):
 
     def __str__(self):
         return self.head_service
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=120, verbose_name=_('Name'))
@@ -70,5 +100,3 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
-
-

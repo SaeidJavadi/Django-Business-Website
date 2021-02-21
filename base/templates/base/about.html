@@ -6,5 +6,67 @@
 
 {% block body %}
 
-    {% include 'base/about_section.html' %}
+    {% load static %}
+
+    <!-- Start Banner -->
+    <div class="section inner_page_header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="text-align: right">
+                    <div class="full">
+                        <h3>درباره ما</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Banner -->
+
+    <!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="float: right">
+                    <div class="full">
+                        <div class="heading_main" style="text-align: right; direction: rtl">
+                            <div class="right">
+
+                                <h2><span class="theme_color">ما می توانیم</span> به رشد کسب و کار شما کمک کنیم </h2>
+                                <p class="large">کسب و کار خود را در 4 مرحله آسان دریافت کنید</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+
+    <!-- section -->
+    <div class="section dark_bg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 white_fonts layout_padding padding_left_right"
+                     style="direction: rtl;text-align: right">
+                    <h3 class="small_heading">همه چیز<br>شما به یک راه حل نیاز دارید</h3>
+                    <p>این یک واقعیت ثابت شده طولانی است که خواننده هنگام مشاهده صفحه آن ، از محتوای قابل خواندن صفحه
+                        منحرف می شود. نکته ای که در استفاده از Lorem Ipsum وجود دارد این است که توزیع حروف کم و بیش عادی
+                        دارد ، در مقابل استفاده از 'محتوا در اینجا ، محتوای اینجا' ، و آن را شبیه به انگلیسی خواندنی
+                        نشان می دهد. اکنون بسیاری از بسته های انتشار دسک تاپ و ویرایشگران صفحات وب از Lorem Ipsum به
+                        عنوان مدل پیش فرض خود استفاده می کنند.</p>
+                </div>
+
+                <div class="col-lg-6 col-md-12 text_align_center padding_0">
+                    <div class="full">
+                        <img class="img-responsive" src="{% static 'root/img/img-2png.png' %}" alt="#"/>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+    {% include 'base/about_team.html' %}
+    {% include 'base/about_colleague.html' %}
 {% endblock body %}
