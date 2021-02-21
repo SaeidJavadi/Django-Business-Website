@@ -10,10 +10,10 @@ image_dir = r'..\media\pictures'
 
 
 class About(models.Model):
-    head1 = models.CharField(max_length=200, verbose_name=_('Head 1'))
-    head1_text = models.TextField(verbose_name=_('Text Head 1'))
+    head1 = models.CharField(max_length=120, verbose_name=_('Head 1'))
+    head1_text = models.CharField(max_length=120, verbose_name=_('Text Head 1'))
     head2 = models.CharField(max_length=200, verbose_name=_('Head 2'))
-    head2_text = models.TextField(verbose_name=_('Text Head 2'))
+    head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'))
     img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir)
     img_head = models.CharField(max_length=200, verbose_name=_('Image Head'))
     img_text = models.TextField(verbose_name=_('Image Text'))
@@ -33,21 +33,23 @@ class AboutPic(models.Model):
     pic = models.ImageField(verbose_name=_('About Picture'), upload_to=image_dir)
 
     class Meta:
-        verbose_name = _('About Picture')
-        verbose_name_plural = _('About Pictures')
+        verbose_name = _('Team Picture')
+        verbose_name_plural = _('Teams Pictures')
 
     def __str__(self):
         return self.about.head1
 
 
 class TeamInfo(models.Model):
+    about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='about_team')
+    img = models.ImageField(verbose_name=_('Profile Inmage'), upload_to=image_dir + r'\profile')
     name = models.CharField(max_length=120, verbose_name=_('Name'))
     bio = models.CharField(max_length=200, verbose_name=_('Bio'))
-    img = models.ImageField(verbose_name=_('Profile Inmage'), upload_to=image_dir + r'\profile')
-    fb = models.CharField(max_length=200, verbose_name=_('Facebook link'))
-    twitter = models.CharField(max_length=200, verbose_name=_('twitter link'))
-    ln = models.CharField(max_length=200, verbose_name=_('LinkedIn link'))
-    google = models.CharField(max_length=200, verbose_name=_('G+ link'))
+    fb = models.CharField(max_length=200, verbose_name=_('Facebook link'), blank=True, null=True)
+    twitter = models.CharField(max_length=200, verbose_name=_('twitter link'), blank=True, null=True)
+    ln = models.CharField(max_length=200, verbose_name=_('LinkedIn link'), blank=True, null=True)
+    google = models.CharField(max_length=200, verbose_name=_('G+ link'), blank=True, null=True)
+    status = models.CharField(max_length=60, verbose_name=_('Status'), choices=STATUS_CHOICES, default='active')
 
     class Meta:
         verbose_name = _('Team Info')

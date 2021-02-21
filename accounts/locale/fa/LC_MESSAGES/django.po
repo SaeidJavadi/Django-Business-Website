@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 19:23+0330\n"
+"POT-Creation-Date: 2021-02-21 20:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,23 +34,23 @@ msgstr "مجوزها"
 msgid "Accounts"
 msgstr "حساب های کاربری"
 
-#: accounts/forms.py:45 accounts/forms.py:84 accounts/forms.py:88
+#: accounts/forms.py:11 accounts/forms.py:50 accounts/forms.py:54
 msgid "Password"
 msgstr "رمزعبور"
 
-#: accounts/forms.py:46 accounts/forms.py:90
+#: accounts/forms.py:12 accounts/forms.py:57
 msgid "Password confirmation"
 msgstr "تایید رمزعبور"
 
-#: accounts/forms.py:81 accounts/forms.py:142 accounts/models.py:7
+#: accounts/forms.py:47 accounts/forms.py:113 accounts/models.py:7
 msgid "Email"
 msgstr "ایمیل"
 
-#: accounts/forms.py:102 accounts/models.py:8
+#: accounts/forms.py:71 accounts/models.py:8
 msgid "First And Last Name"
 msgstr "نام و نام خانوادگی"
 
-#: accounts/forms.py:123 accounts/models.py:9
+#: accounts/forms.py:94 accounts/models.py:9
 msgid "Date Of Birth"
 msgstr "تاریخ تولد"
 
@@ -116,7 +116,7 @@ msgid "Login Form"
 msgstr "فرم ورود"
 
 #: accounts/templates/accounts/login.html:21
-#: accounts/templates/accounts/register.html:23
+#: accounts/templates/accounts/register.html:27
 msgid "We'll never share your phone number with anyone else."
 msgstr "ما هرگز اطلاعات حساب شما را با بقیه به اشتراک نمی گذاریم."
 
@@ -136,43 +136,58 @@ msgstr "یا"
 msgid "Sign up"
 msgstr "ثبت نام"
 
-#: accounts/templates/accounts/register.html:4
-#: accounts/templates/accounts/register.html:14
+#: accounts/templates/accounts/register.html:5
+#: accounts/templates/accounts/register.html:18
 msgid "Register Form"
 msgstr "فرم ثبت نام"
 
-#: accounts/templates/accounts/register.html:20
+#: accounts/templates/accounts/register.html:24
 msgid "Enter your Specifications"
 msgstr "مشخصات خود را وارد کنید"
 
-#: accounts/templates/accounts/register.html:26
+#: accounts/templates/accounts/register.html:30
 msgid "Register"
 msgstr "ثبت نام"
 
-#: accounts/templates/accounts/register.html:40
-msgid "Passwords must be the same"
-msgstr "رمزهای عبور باید یکسان باشند"
-
-#: accounts/views.py:18
+#: accounts/views.py:19
 msgid "logged in successfully"
 msgstr "با موفقیت وارد شدید"
 
-#: accounts/views.py:21
+#: accounts/views.py:22
 msgid "your Email Or Password is wrong"
 msgstr "ایمیل یا رمز ورود شما اشتباه است"
 
-#: accounts/views.py:23
+#: accounts/views.py:24
 msgid "No account created with this email"
 msgstr "هیچ حسابی با این ایمیل ایجاد نشده است"
 
-#: accounts/views.py:27
+#: accounts/views.py:28
 msgid "Please enter your information correctly"
 msgstr "لطفا اطلاعات خود را به درستی وارد کنید"
 
-#: accounts/views.py:43
+#: accounts/views.py:49
 msgid "you registered successfully"
 msgstr "حساب شما با موفقیت ایجاد شد"
 
 #: accounts/views.py:52
+msgid "this idcode is exists"
+msgstr ""
+
+#: accounts/views.py:54
+msgid "this phone is exists"
+msgstr ""
+
+#: accounts/views.py:56
+msgid "People under the age of 18 are not allowed to register"
+msgstr ""
+
+#: accounts/views.py:58
+msgid "this Email is exists"
+msgstr ""
+
+#: accounts/views.py:64
 msgid "you logged out successfully"
 msgstr "با موفقیت خارج شدید"
+
+#~ msgid "Passwords must be the same"
+#~ msgstr "رمزهای عبور باید یکسان باشند"
