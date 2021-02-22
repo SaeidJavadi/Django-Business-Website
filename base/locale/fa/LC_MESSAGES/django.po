@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-21 20:27+0330\n"
+"POT-Creation-Date: 2021-02-22 21:10+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgstr "فعال"
 msgid "inactive"
 msgstr "غیرفعال"
 
-#: base/models.py:13 base/models.py:63
+#: base/models.py:13 base/models.py:65
 msgid "Head 1"
 msgstr "تیتر اول"
 
@@ -62,7 +62,7 @@ msgstr "تیتر اول"
 msgid "Text Head 1"
 msgstr "متن تیتر اول"
 
-#: base/models.py:15 base/models.py:64
+#: base/models.py:15 base/models.py:66
 msgid "Head 2"
 msgstr "تیتر دوم"
 
@@ -70,15 +70,15 @@ msgstr "تیتر دوم"
 msgid "Text Head 2"
 msgstr "متن تیتر دوم"
 
-#: base/models.py:17 base/models.py:67
+#: base/models.py:17 base/models.py:69
 msgid "Image"
 msgstr "تصویر"
 
-#: base/models.py:18 base/models.py:68
+#: base/models.py:18 base/models.py:70
 msgid "Image Head"
 msgstr "تیتر تصویر"
 
-#: base/models.py:19 base/models.py:69
+#: base/models.py:19 base/models.py:71
 msgid "Image Text"
 msgstr "متن تصویر"
 
@@ -86,7 +86,7 @@ msgstr "متن تصویر"
 msgid "Plain Text"
 msgstr "متن"
 
-#: base/models.py:21 base/models.py:52
+#: base/models.py:21 base/models.py:54
 msgid "Status"
 msgstr "وضعیت"
 
@@ -106,94 +106,102 @@ msgstr "تصویر تیم"
 msgid "Teams Pictures"
 msgstr "تصاویر تیم"
 
+#: base/models.py:44
+msgid "Head 3"
+msgstr "تیتر سوم"
+
 #: base/models.py:45
+msgid "Text Head 3"
+msgstr "متن تیتر سوم"
+
+#: base/models.py:47
 msgid "Profile Inmage"
 msgstr "تصویر پروفایل"
 
-#: base/models.py:46 base/models.py:94
+#: base/models.py:48 base/models.py:96
 msgid "Name"
 msgstr "نام"
 
-#: base/models.py:47
+#: base/models.py:49
 msgid "Bio"
 msgstr "بیوگرافی"
 
-#: base/models.py:48
+#: base/models.py:50
 msgid "Facebook link"
 msgstr "فیسبوک"
 
-#: base/models.py:49
+#: base/models.py:51
 msgid "twitter link"
 msgstr "تویتر"
 
-#: base/models.py:50
+#: base/models.py:52
 msgid "LinkedIn link"
 msgstr "لینکدین"
 
-#: base/models.py:51
+#: base/models.py:53
 msgid "G+ link"
 msgstr "گوگل پلاس"
 
-#: base/models.py:55
+#: base/models.py:57
 msgid "Team Info"
 msgstr "پروفایل"
 
-#: base/models.py:56
+#: base/models.py:58
 msgid "Teams Info"
 msgstr "مشخصات تیم"
 
-#: base/models.py:65
+#: base/models.py:67
 msgid "Total Projects"
 msgstr "تمام پروژه ها"
 
-#: base/models.py:66
+#: base/models.py:68
 msgid "Projects Done"
 msgstr "پروژه های انجام شده"
 
-#: base/models.py:72
+#: base/models.py:74
 msgid "Service Page"
 msgstr "سرویس"
 
-#: base/models.py:73
+#: base/models.py:75
 msgid "Services Page"
 msgstr "سرویس ها"
 
-#: base/models.py:80
+#: base/models.py:82
 msgid "Avator"
 msgstr "آواتار"
 
-#: base/models.py:81
+#: base/models.py:83
 msgid "Service Head"
 msgstr "تیتر سرویس"
 
-#: base/models.py:82
+#: base/models.py:84
 msgid "Text Service"
 msgstr "متن سرویس"
 
-#: base/models.py:86
+#: base/models.py:88
 msgid "Service"
 msgstr "سرویس"
 
-#: base/models.py:87
+#: base/models.py:89
 msgid "Services"
 msgstr "سرویس ها"
 
-#: base/models.py:95
+#: base/models.py:97
 msgid "Email"
 msgstr "ایمیل"
 
-#: base/models.py:96
+#: base/models.py:98
 msgid "Phone Number"
 msgstr "شماره تلفن"
 
-#: base/models.py:97
+#: base/models.py:99
 msgid "Message"
 msgstr "پیام"
 
-#: base/models.py:100
+#: base/models.py:102
 msgid "Contact"
 msgstr "ارتباط با ما"
 
-#: base/models.py:101
+#: base/models.py:103
 msgid "Contacts"
 msgstr "مخاطب"

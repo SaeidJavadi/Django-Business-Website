@@ -6,14 +6,16 @@ STATUS_CHOICES = (
     ('inactive', _('inactive')),
 )
 
-image_dir = r'..\media\pictures'
+image_dir = r'../media/pictures'
 
 
 class About(models.Model):
     head1 = models.CharField(max_length=120, verbose_name=_('Head 1'))
-    head1_text = models.CharField(max_length=120, verbose_name=_('Text Head 1'))
+    head1_text = models.CharField(max_length=120, verbose_name=_('Text Head 1'), null=True, blank=True)
     head2 = models.CharField(max_length=200, verbose_name=_('Head 2'))
-    head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'))
+    head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'), null=True, blank=True)
+    head3 = models.CharField(max_length=120, verbose_name=_('Head 3'))
+    head3_text = models.CharField(max_length=120, verbose_name=_('Text Head 3'), null=True, blank=True)
     img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir)
     img_head = models.CharField(max_length=200, verbose_name=_('Image Head'))
     img_text = models.TextField(verbose_name=_('Image Text'))

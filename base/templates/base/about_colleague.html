@@ -8,7 +8,10 @@
                     <div class="heading_main" style="direction: rtl;text-align: right">
                         <div class="right">
                             <p class="small_tag">تیم ما</p>
-                            <h2><span class="theme_color">ما یک تیم حرفه ای از تحلیلگران تجارت داریم.</span></h2>
+                            <h2><span class="theme_color">{{ about.head3 }}</span></h2>
+                            {% if about.head3.text != None %}
+                            <p class="large">{{ about.head3_text }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
