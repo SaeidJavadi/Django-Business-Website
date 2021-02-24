@@ -21,54 +21,42 @@
 
                     <!-- The slideshow -->
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img1.png' %}" alt="#"/>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img2.png' %}" alt="#"/>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img3.png' %}" alt="#"/>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img4.png' %}" alt="#"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img1.png' %}" alt="#"/>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img2.png' %}" alt="#"/>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img3.png' %}" alt="#"/>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <img class="img-responsive" src="{% static 'root/img/img4.png' %}" alt="#"/>
+                        {% if about.about_pic.all.count >= 4 %}
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 col-sm-12">
+                                        <img class="img-responsive" src="{{ about.about_pic.all.0.pic }}" alt="#"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12">
+                                        <img class="img-responsive" src="{{ about.about_pic.all.1.pic }}" alt="#"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12">
+                                        <img class="img-responsive" src="{{ about.about_pic.all.2.pic }}" alt="#"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12">
+                                        <img class="img-responsive" src="{{ about.about_pic.all.3.pic }}" alt="#"/>
+                                    </div>
                                 </div>
                             </div>
+                        {% endif %}
+                        {% if about.about_pic.all.count == 8 %}
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <img class="img-responsive" src="{% static 'root/img/img1.png' %}" alt="#"/>
+                                        <img class="img-responsive" src="{{ about.about_pic.all.4.pic }}" alt="#"/>
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <img class="img-responsive" src="{% static 'root/img/img1.png' %}" alt="#"/>
+                                        <img class="img-responsive" src="{{ about.about_pic.all.5.pic }}" alt="#"/>
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <img class="img-responsive" src="{% static 'root/img/img1.png' %}" alt="#"/>
+                                        <img class="img-responsive" src="{{ about.about_pic.all.6.pic }}" alt="#"/>
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <img class="img-responsive" src="{% static 'root/img/img1.png' %}" alt="#"/>
+                                        <img class="img-responsive" src="{{ about.about_pic.all.7.pic }}" alt="#"/>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endif %}
 
                         <!-- Left and right controls -->
                         <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -90,7 +78,6 @@
                 {#                    <a href="about.html" class="hvr-radial-out button-theme" style="text-align: center;direction: rtl">مشاهده بیشتر ></a>#}
                 {#                </div>#}
                 {#            </div>#}
-
             </div>
         </div>
     </div>
