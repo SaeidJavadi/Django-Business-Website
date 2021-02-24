@@ -47,7 +47,7 @@ def userRegister(request):
                                                             phone=cd['phone'], idcode=cd['idcode'], password=cd['password1'])
                             user.save()
                             messages.success(request, _('you registered successfully'), 'success')
-                            return redirect('base:index')
+                            return redirect('accounts:login')
                         else:
                             messages.success(request,_('this idcode is exists'))
                     else:
