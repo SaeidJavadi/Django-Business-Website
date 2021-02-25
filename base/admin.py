@@ -34,7 +34,7 @@ export_json.short_description = _('Export selected as Json request')
 
 class ImageInstanceInline(admin.TabularInline):
     model = models.AboutPic
-    extra = 4
+    extra = 1
 
 
 class TeamInstanceInline(admin.StackedInline):
@@ -47,4 +47,17 @@ class AboutAdmin(admin.ModelAdmin):
     inlines = (ImageInstanceInline, TeamInstanceInline)
     list_display = ('head1', 'head2', 'status')
     list_editable = ('status',)
+    actions = (make_active, make_inactive, export_json)
+
+
+class ServiceToolsInstanceInline(admin.StackedInline):
+    model = models.ServicesTools
+    extra = 1
+
+
+@admin.register(models.Services)
+class ServiceAdmin(admin.ModelAdmin):
+    inlines = (ServiceToolsInstanceInline,)
+    list_display = ('head1', 'head2', 'proj_total', 'proj_done', 'status')
+    list_editable = ('status', 'proj_total', 'proj_done')
     actions = (make_active, make_inactive, export_json)

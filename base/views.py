@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from base.models import About
+from base.models import About, Services
 
 
 def index(request):
@@ -12,7 +12,8 @@ def about(request):
 
 
 def services(request):
-    return render(request, template_name='base/services.html', context={})
+    service = Services.objects.filter(status='active').last()
+    return render(request, template_name='base/services.html', context={'service': service})
 
 
 def contact(request):

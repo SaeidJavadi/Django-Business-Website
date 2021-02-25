@@ -51,7 +51,6 @@ class TeamInfo(models.Model):
     twitter = models.CharField(max_length=200, verbose_name=_('twitter link'), blank=True, null=True)
     ln = models.CharField(max_length=200, verbose_name=_('LinkedIn link'), blank=True, null=True)
     google = models.CharField(max_length=200, verbose_name=_('G+ link'), blank=True, null=True)
-    status = models.CharField(max_length=60, verbose_name=_('Status'), choices=STATUS_CHOICES, default='active')
 
     class Meta:
         verbose_name = _('Team Info')
@@ -61,7 +60,7 @@ class TeamInfo(models.Model):
         return self.name
 
 
-class ServiceHead(models.Model):
+class Services(models.Model):
     head1 = models.CharField(max_length=200, verbose_name=_('Head 1'))
     head2 = models.CharField(max_length=200, verbose_name=_('Head 2'))
     proj_total = models.IntegerField(verbose_name=_('Total Projects'))
@@ -69,6 +68,7 @@ class ServiceHead(models.Model):
     img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir)
     img_head = models.CharField(max_length=200, verbose_name=_('Image Head'))
     img_text = models.TextField(verbose_name=_('Image Text'))
+    status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='active', verbose_name=_('Status'))
 
     class Meta:
         verbose_name = _('Service Page')
@@ -78,11 +78,11 @@ class ServiceHead(models.Model):
         return self.head1
 
 
-class Services(models.Model):
+class ServicesTools(models.Model):
+    servicehead = models.ForeignKey(Services, on_delete=models.CASCADE, related_name='service_tools')
     avator = models.ImageField(verbose_name=_('Avator'), upload_to=image_dir)
     head_service = models.CharField(max_length=120, verbose_name=_('Service Head'))
     text_service = models.TextField(verbose_name=_('Text Service'))
-    status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='active')
 
     class Meta:
         verbose_name = _('Service')
