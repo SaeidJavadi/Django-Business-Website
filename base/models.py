@@ -63,6 +63,7 @@ class TeamInfo(models.Model):
 class Services(models.Model):
     head1 = models.CharField(max_length=200, verbose_name=_('Head 1'))
     head2 = models.CharField(max_length=200, verbose_name=_('Head 2'))
+    head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'), null=True, blank=True)
     proj_total = models.IntegerField(verbose_name=_('Total Projects'))
     proj_done = models.IntegerField(verbose_name=_('Projects Done'))
     img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir)
