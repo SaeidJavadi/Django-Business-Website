@@ -17,9 +17,6 @@
 <!-- section -->
 <div class="section layout_padding">
     <div class="container">
-
-
-
         <div class="row">
             <div class="col-md-12">
                 <div class="full" style="direction: rtl;text-align: right;float: right;display: block">
@@ -74,29 +71,35 @@
             <div class="col-lg-7 col-sm-7 col-xs-12 margin-top_30" style="direction: rtl">
                 <div class="contact-block">
                     <form id="contactForm">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="نام شما" required data-error="لطفا نا خود را وارد کنید">
-                                    <div class="help-block with-errors"></div>
+{#                                    <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>#}
+                                    {{ form.name }}
+                                    {{ form.name.errors }}
+                                    <div class="help-block with-errors" dir="rtl" style="text-align: right;"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" placeholder="ایمیل شما" id="email" class="form-control" name="name" required data-error="لطفا ایمیل خود را وارد کنید">
-                                    <div class="help-block with-errors"></div>
+                                    {{ form.email }}
+                                    {{ form.email.errors }}
+                                    <div class="help-block with-errors" dir="rtl" style="text-align: right;"></div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" placeholder="شماره تماس شما" id="number" class="form-control" name="number" required data-error="لطفا شماره خود را وارد کنید">
-                                    <div class="help-block with-errors"></div>
+                                    {{ form.phone }}
+                                    {{ form.phone.errors }}
+                                    <div class="help-block with-errors" dir="rtl" style="text-align: right;"></div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="message" placeholder="پیام شما" rows="8" data-error="پیام خود را بنویسید" required></textarea>
-                                    <div class="help-block with-errors"></div>
+                                    {{ form.message }}
+                                    {{ form.message.errors }}
+                                    <div class="help-block with-errors" dir="rtl" style="text-align: right;"></div>
                                 </div>
                                 <div class="submit-button text-center">
                                     <button class="btn btn-common" id="submit" type="submit">ارسال پیام</button>

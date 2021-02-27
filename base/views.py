@@ -1,5 +1,8 @@
-from django.shortcuts import render
-from base.models import About, Services
+from django.shortcuts import render, redirect
+from base.models import About, Services, Contact
+from base.forms import ContactForm
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 def index(request):
@@ -17,4 +20,12 @@ def services(request):
 
 
 def contact(request):
-    return render(request, template_name='base/contact.html', context={})
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('updated successfully!!'), extra_tags='alert alert-success')
+            return redirect('base:contact')
+    else:
+        form = ContactForm()
+    return render(request, template_name='base/contact.html', context={'form': form})
