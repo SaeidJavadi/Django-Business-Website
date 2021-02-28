@@ -49,6 +49,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'base.context_processors.footerdata', # footer data
                 'base.context_processors.news', # Newsletters Form
+                'base.context_processors.headerdata', # Header Data
             ],
         },
     },
