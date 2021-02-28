@@ -137,6 +137,9 @@ class Header(models.Model):
 
 class Banners(models.Model):
     header = models.ForeignKey(Header, on_delete=models.CASCADE, related_name='header_banner')
+    head1 = models.CharField(max_length=200, verbose_name=_('Head 1'))
+    head2 = models.CharField(max_length=200, verbose_name=_('Head 2'))
+    head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'), null=True, blank=True)
     banner = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/banner')
 
     class Meta:

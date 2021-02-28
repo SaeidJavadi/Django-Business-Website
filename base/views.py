@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
-from base.models import About, Services
+from base.models import About, Services, Header
 from base.forms import ContactForm, NewslettersForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
 
 def index(request):
-    return render(request, template_name='base/index.html', context={})
+    header = Header.objects.filter(status='active').last()
+    about = About.objects.filter(status='active').last()
+    service = Services.objects.filter(status='active').last()
+    return render(request, template_name='base/index.html',
+                  context={'header': header, 'about': about, 'service': service})
 
 
 def about(request):

@@ -60,7 +60,7 @@ class TeamInstanceInline(admin.StackedInline):
     extra = 1
 
 
-class BannerInstanceInline(admin.TabularInline):
+class BannerInstanceInline(admin.StackedInline):
     model = models.Banners
     extra = 1
 
