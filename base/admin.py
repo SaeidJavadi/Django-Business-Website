@@ -60,6 +60,11 @@ class TeamInstanceInline(admin.StackedInline):
     extra = 1
 
 
+class BannerInstanceInline(admin.TabularInline):
+    model = models.Banners
+    extra = 1
+
+
 @admin.register(models.About)
 class AboutAdmin(admin.ModelAdmin):
     inlines = (ImageInstanceInline, TeamInstanceInline)
@@ -86,3 +91,24 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone', 'message', 'status')
     list_editable = ('status',)
     actions = (export_json, make_read, make_unread)
+
+
+@admin.register(models.Footer)
+class FooterAdmin(admin.ModelAdmin):
+    list_display = ('email', 'phone', 'address', 'status')
+    list_editable = ('status',)
+    actions = (make_active, make_inactive, export_json)
+
+
+@admin.register(models.Header)
+class HeaderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'status')
+    list_editable = ('status',)
+    actions = (make_active, make_inactive, export_json)
+    inlines = (BannerInstanceInline,)
+
+
+@admin.register(models.Newsletters)
+class NewslettersAdmin(admin.ModelAdmin):
+    list_display = ('email','joindate')
+    actions = (export_json,)

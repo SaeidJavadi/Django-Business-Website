@@ -44,7 +44,7 @@ class AboutPic(models.Model):
 
 class TeamInfo(models.Model):
     about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='about_team')
-    img = models.ImageField(verbose_name=_('Profile Inmage'), upload_to=image_dir + r'\profile')
+    img = models.ImageField(verbose_name=_('Profile Inmage'), upload_to=image_dir + r'/profile')
     name = models.CharField(max_length=120, verbose_name=_('Name'))
     bio = models.CharField(max_length=200, verbose_name=_('Bio'))
     fb = models.CharField(max_length=200, verbose_name=_('Facebook link'), blank=True, null=True)
@@ -66,10 +66,10 @@ class Services(models.Model):
     head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'), null=True, blank=True)
     proj_total = models.IntegerField(verbose_name=_('Total Projects'))
     proj_done = models.IntegerField(verbose_name=_('Projects Done'))
-    img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir)
+    img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/service')
     img_head = models.CharField(max_length=200, verbose_name=_('Image Head'))
     img_text = models.TextField(verbose_name=_('Image Text'))
-    status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='active', verbose_name=_('Status'))
+    status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='inactive', verbose_name=_('Status'))
 
     class Meta:
         verbose_name = _('Service Page')
@@ -102,8 +102,52 @@ class Contact(models.Model):
                               choices=(('Read', _('Read')), ('UnRead', _('UnRead'))), default='UnRead')
 
     class Meta:
-        verbose_name = _('Contact')
-        verbose_name_plural = _('Contacts')
+        verbose_name = _('Contact us')
+        verbose_name_plural = _('Contact us')
 
     def __str__(self):
         return self.email
+
+
+class Footer(models.Model):
+    address = models.CharField(max_length=200, verbose_name=_('Address'))
+    email = models.CharField(max_length=200, verbose_name=_('Email'))
+    phone = models.CharField(max_length=200, verbose_name=_('Phone'))
+    head = models.CharField(max_length=200, verbose_name=_('Contact Us Head'))
+    logo = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/logo')
+    fb = models.CharField(max_length=200, verbose_name=_('Facebook link'), blank=True, null=True)
+    twitter = models.CharField(max_length=200, verbose_name=_('twitter link'), blank=True, null=True)
+    ln = models.CharField(max_length=200, verbose_name=_('LinkedIn link'), blank=True, null=True)
+    google = models.CharField(max_length=200, verbose_name=_('G+ link'), blank=True, null=True)
+    status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='inactive', verbose_name=_('Status'))
+
+    class Meta:
+        verbose_name = _('Footer Control')
+        verbose_name_plural = _('Footer Control')
+
+
+class Header(models.Model):
+    logo = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/logo')
+    status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='inactive', verbose_name=_('Status'))
+
+    class Meta:
+        verbose_name = _('Header Control')
+        verbose_name_plural = _('Header Control')
+
+
+class Banners(models.Model):
+    header = models.ForeignKey(Header, on_delete=models.CASCADE, related_name='header_banner')
+    banner = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/banner')
+
+    class Meta:
+        verbose_name = _('Banner')
+        verbose_name_plural = _('Banners')
+
+
+class Newsletters(models.Model):
+    email = models.CharField(max_length=120, verbose_name=_('Email'))
+    joindate = models.DateTimeField(auto_now_add=True, verbose_name=_('Join Date'))
+
+    class Meta:
+        verbose_name = _('Newsletters')
+        verbose_name_plural = _('Newsletters')

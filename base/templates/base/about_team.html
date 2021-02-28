@@ -1,5 +1,3 @@
-{% load static %}
-
 <!-- section -->
 <div class="section layout_padding">
     <div class="container">
@@ -18,7 +16,6 @@
         <div class="row margin-top_30">
             <div class="col-lg-12 margin-top_30">
                 <div id="demo" class="carousel slide" data-ride="carousel">
-
                     <!-- The slideshow -->
                     <div class="carousel-inner">
                         {% if about.about_pic.all.count >= 4 %}
@@ -57,7 +54,6 @@
                                 </div>
                             </div>
                         {% endif %}
-
                         <!-- Left and right controls -->
                         <a class="carousel-control-prev" href="#demo" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
@@ -65,19 +61,11 @@
                         <a class="carousel-control-next" href="#demo" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </a>
-
                     </div>
                 </div>
-
                 <div class="col-lg-12" style="text-align: right">
                     <p>{{ about.plain_text }}</p>
                 </div>
-
-                {#            <div class="col-lg-12">#}
-                {#                <div class="full center">#}
-                {#                    <a href="about.html" class="hvr-radial-out button-theme" style="text-align: center;direction: rtl">مشاهده بیشتر ></a>#}
-                {#                </div>#}
-                {#            </div>#}
             </div>
         </div>
     </div>

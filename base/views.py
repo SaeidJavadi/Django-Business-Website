@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from base.models import About, Services, Contact
-from base.forms import ContactForm
+from base.models import About, Services
+from base.forms import ContactForm, NewslettersForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
@@ -27,7 +27,18 @@ def contact(request):
             messages.success(request, _('Your message has been successfully sent'), extra_tags='alert alert-success')
             return redirect('base:contact')
         else:
-            messages.success(request, _('An error occurred while sending your message'), extra_tags='alert alert-warning')
+            messages.success(request, _('An error occurred while sending your message'),
+                             extra_tags='alert alert-warning')
     else:
         form = ContactForm()
     return render(request, template_name='base/contact.html', context={'form': form})
+
+
+def newsletters(request):
+    if request.method == 'POST':
+        form = NewslettersForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('Your email was successfully added to the newsletter'),
+                             extra_tags='alert alert-success')
+            return redirect('base:index')

@@ -13,7 +13,6 @@
     </div>
 </div>
 <!-- end Banner -->
-
 <!-- section -->
 <div class="section layout_padding">
     <div class="container">
@@ -22,14 +21,13 @@
                 <div class="full" style="direction: rtl;text-align: right;float: right;display: block">
                     <div class="heading_main text_align_left">
                         <div class="right">
-                            <h2><span class="theme_color">چگونه می توان</span>  ابزاری را ارائه داد که به هرکسی کمک می کند تا ایده خود را صدا کند</h2>
+                            <h2><span class="theme_color">{{ footer.head }}</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row margin-top_30">
-
             <div class="col-lg-5 col-sm-5 col-xs-12 margin-top_30" style="direction: rtl; text-align: right">
                 <div class="left-contact">
                     <div class="media cont-line">
@@ -38,7 +36,7 @@
                         </div>
                         <div class="media-body dit-right">
                             <h4>آدرس</h4>
-                            <p>ایران رشت</p>
+                            <p>{{ footer.address }}</p>
                         </div>
                     </div>
                     <div class="media cont-line">
@@ -47,8 +45,7 @@
                         </div>
                         <div class="media-body dit-right">
                             <h4>ایمیل</h4>
-                            <a href="#">demoinfo@gmail.com</a><br>
-                            <a href="#">demoinfo@gmail.com</a>
+                            <a href="#">{{ footer.email }}</a>
                         </div>
                     </div>
                     <div class="media cont-line">
@@ -57,13 +54,11 @@
                         </div>
                         <div class="media-body dit-right">
                             <h4>شماره تماس</h4>
-                            <a href="#">12345 67890</a><br>
-                            <a href="#">12345 67890</a>
+                            <a href="#">{{ footer.phone }}</a>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-7 col-sm-7 col-xs-12 margin-top_30" style="direction: rtl">
                 <div class="contact-block">
                     <form action="#" method="post">
@@ -71,7 +66,6 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-{#                                    <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>#}
                                     {{ form.name }}
                                     {{ form.name.errors }}
                                     <div class="help-block with-errors" dir="rtl" style="text-align: right;"></div>
@@ -107,14 +101,8 @@
                     </form>
                 </div>
             </div>
-
-
-
-
-
         </div>
     </div>
 </div>
 <!-- end section -->
-
 {% endblock body %}

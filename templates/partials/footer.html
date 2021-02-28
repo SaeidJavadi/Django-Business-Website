@@ -1,11 +1,11 @@
 {% load static %}
 
 <!-- Start Footer -->
-<footer class="footer-box" >
-    <div class="container" >
+<footer class="footer-box">
+    <div class="container">
         <div class="row" dir="rtl" style="text-align: right">
             <div class="col-md-12 margin-bottom_30" dir="ltr" style="text-align: left">
-                <img src="{% static 'root/img/f_logo.png' %}" alt="#" />
+                <img src="{{ footer.logo }}" alt="#"/>
             </div>
             <div class="col-xl-6 white_fonts">
                 <div class="row">
@@ -17,8 +17,7 @@
                             <img src="{% static 'root/img/social1.png' %}">
                         </div>
                         <div class="full white_fonts">
-                            <p>رشت
-                                <br>ایران</p>
+                            <p>{{ footer.address }}</p>
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -26,8 +25,7 @@
                             <img src="{% static 'root/img/social2.png' %}">
                         </div>
                         <div class="full white_fonts">
-                            <p>consultation@gmail.com
-                                <br>consultation@gmail.com</p>
+                            <p>{{ footer.email }}</p>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -35,21 +33,31 @@
                             <img src="{% static 'root/img/social3.png' %}">
                         </div>
                         <div class="full white_fonts">
-                            <p style="direction: ltr">+7586656566
-                                <br>+7586656566</p>
+                            <p style="direction: ltr">{{ footer.phone }}</p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <ul class="full social_icon margin-top_20">
-                            <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            {% if footer.fb %}
+                                <li><a href="{{ footer.fb }}"><i
+                                        class="fa fa-facebook-f"></i></a></li>
+                            {% endif %}
+                            {% if footer.twitter %}
+                                <li><a href="{{ footer.twitter }}"><i
+                                        class="fa fa-twitter"></i></a></li>
+                            {% endif %}
+                            {% if footer.ln %}
+                                <li><a href="{{ footer.ln }}"><i
+                                        class="fa fa-linkedin"></i></a></li>
+                            {% endif %}
+                            {% if footer.google %}
+                                <li><a href="{{ footer.google }}"><i
+                                        class="fa fa-google-plus"></i></a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-6 white_fonts">
                 <div class="row">
                     <div class="col-md-6">
@@ -59,22 +67,17 @@
                                 <li><a href="{% url 'base:index' %}">صفحه اصلی</a></li>
                                 <li><a href="{% url 'base:about' %}">درباره ما</a></li>
                                 <li><a href="{% url 'base:services' %}">سرویس ها</a></li>
-{#                                <li><a href="#">Blog</a></li>#}
                                 <li><a href="{% url 'base:contact' %}">تماس با ما</a></li>
                             </ul>
                         </div>
-{#                        <div class="footer_blog recent_post_footer" dir="rtl">#}
-{#                            <h3>Recent Post</h3>#}
-{#                            <p>Participate in staff meetings manage dedicated to marketing November 25, 2019</p>#}
-{#                        </div>#}
                     </div>
                     <div class="col-md-6">
-                        <div >
+                        <div>
                             <h3>خبرنامه</h3>
                             <div class="newsletter_form">
-                                <form action="{% url 'base:index' %}" dir="rtl">
+                                <form action="/newsletters/" method="post" dir="ltr">
                                     {% csrf_token %}
-                                    <input type="email" placeholder="ایمیل شما" name="#" required />
+                                    {{ news.email }}
                                     <button>ارسال</button>
                                 </form>
                             </div>
@@ -98,6 +101,5 @@
         </div>
     </div>
 </div>
-
 <a href="#" id="scroll-to-top" class="hvr-radial-out"><i class="fa fa-angle-up"></i></a>
 <!-- End Footer -->

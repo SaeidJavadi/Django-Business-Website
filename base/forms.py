@@ -1,5 +1,5 @@
 from django import forms
-from base.models import Contact
+from base.models import Contact, Newsletters
 
 
 class ContactForm(forms.ModelForm):
@@ -19,4 +19,15 @@ class ContactForm(forms.ModelForm):
             'message': forms.Textarea(
                 attrs={'class': 'form-control', 'data-error': 'پیام خود را بنویسید', 'placeholder': 'پیام شما',
                        'style': 'color:#00FF3E'})
+        }
+
+
+class NewslettersForm(forms.ModelForm):
+    class Meta:
+        model = Newsletters
+        fields = ('email',)
+
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'data-error': 'لطفا ایمیل خود را وارد کنید',
+                                             'placeholder': 'Your Email'})
         }
