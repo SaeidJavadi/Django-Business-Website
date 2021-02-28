@@ -98,6 +98,8 @@ class Contact(models.Model):
     email = models.EmailField(verbose_name=_('Email'))
     phone = models.IntegerField(verbose_name=_('Phone Number'))
     message = models.TextField(verbose_name=_('Message'))
+    status = models.CharField(max_length=60, verbose_name=_('Status'),
+                              choices=(('Read', _('Read')), ('UnRead', _('UnRead'))), default='UnRead')
 
     class Meta:
         verbose_name = _('Contact')

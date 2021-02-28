@@ -21,6 +21,22 @@ def make_inactive(modeladmin, request, queryset):
     modeladmin.message_user(request, "{} {}.".format(message_bit, m2))
 
 
+def make_read(modeladmin, request, queryset):
+    result = queryset.update(status='Read')
+    m1 = _("change status was")
+    message_bit = "{} {}".format(result, m1)
+    m2 = _("successfuly marked as Read")
+    modeladmin.message_user(request, "{} {}.".format(message_bit, m2))
+
+
+def make_unread(modeladmin, request, queryset):
+    result = queryset.update(status='UnRead')
+    m1 = _("change status was")
+    message_bit = "{} {}".format(result, m1)
+    m2 = _("successfuly marked as UnRead")
+    modeladmin.message_user(request, "{} {}.".format(message_bit, m2))
+
+
 def export_json(modeladmin, request, queryset):
     response = HttpResponse(content_type="application/json")
     serializers.serialize('json', queryset, stream=response)
@@ -29,6 +45,8 @@ def export_json(modeladmin, request, queryset):
 
 make_active.short_description = _('Mark selected status as Active')
 make_inactive.short_description = _('Mark selected status as Inactive')
+make_read.short_description = _('Mark selected status as Read')
+make_unread.short_description = _('Mark selected status as UnRead')
 export_json.short_description = _('Export selected as Json request')
 
 
@@ -61,3 +79,10 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ('head1', 'head2', 'proj_total', 'proj_done', 'status')
     list_editable = ('status', 'proj_total', 'proj_done')
     actions = (make_active, make_inactive, export_json)
+
+
+@admin.register(models.Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'message', 'status')
+    list_editable = ('status',)
+    actions = (export_json, make_read, make_unread)
