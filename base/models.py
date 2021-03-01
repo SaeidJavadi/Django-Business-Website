@@ -150,7 +150,7 @@ class Banners(models.Model):
         verbose_name_plural = _('Banners')
 
     def __str__(self):
-        return self.head1
+        return str(self.id)
 
 
 class Newsletters(models.Model):
