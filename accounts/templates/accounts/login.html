@@ -5,34 +5,34 @@
 {% endblock title %}
 {% block body %}
     <section class="bg-texture">
-            <div class="row">
-                <div class="col-xl-4 col-sm-2"></div>
-                <div class="col-xl-4 col-sm-8" style="margin: 20px 0 20px 0;">
-                    <div class="animated rubberBand"
-                         style="background: #1f1f1f; border-radius: 5px; padding: 20px; color: #ffffff;">
-                        <div dir="rtl" style="text-align: right">
-                            <h3 class="text-center" style="color: #36ff00"><b>{% trans 'Login Form' %}</b></h3>
-                            <hr style="border:1px solid green;border-radius:3px;">
-                            <form method="post">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    {{ form.as_p }}
-                                    <small id="emailHelp" class="form-text text-muted" dir="rtl">
-                                        {% trans "We'll never share your phone number with anyone else." %}
-                                    </small>
-                                    <small> <a class="login-link" style="color: #4c6485"
-                                               href="{% url 'accounts:forget' %}">{% trans 'Forget Your Password?' %}</a></small>
-                                </div>
-                                <button type="submit" class="btn btn-info btn-block">{% trans "Login" %}</button>
-                                <p style="text-align: center; color: #00ff0f"><b>{% trans 'OR' %}</b></p>
-                                <a class="btn btn-outline-warning btn-block" href="{% url 'accounts:register' %}">
-                                    {% trans "Sign up" %}
-                                </a>
-                            </form>
-                        </div>
+        <div class="row">
+            <div class="col-xl-4 col-sm-2"></div>
+            <div class="col-xl-4 col-sm-8" style="margin: 20px 0 20px 0;">
+                <div class="animated rubberBand"
+                     style="background: #1f1f1f; border-radius: 5px; padding: 20px; color: #ffffff;">
+                    <div dir="rtl" style="text-align: right">
+                        <h3 class="text-center" style="color: #36ff00"><b>{% trans 'Login Form' %}</b></h3>
+                        <hr style="border:1px solid green;border-radius:3px;">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.as_p }}
+                                <small id="emailHelp" class="form-text text-muted" dir="rtl">
+                                    {% trans "We'll never share your phone number with anyone else." %}
+                                </small>
+                                <small> <a class="login-link" style="color: #4c6485"
+                                           href="{% url 'accounts:forget' %}">{% trans 'Forget Your Password?' %}</a></small>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-block">{% trans "Login" %}</button>
+                            <p style="text-align: center; color: #00ff0f"><b>{% trans 'OR' %}</b></p>
+                            <a class="btn btn-outline-warning btn-block" href="{% url 'accounts:register' %}">
+                                {% trans "Sign up" %}
+                            </a>
+                        </form>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-2"></div>
             </div>
+            <div class="col-xl-4 col-sm-2"></div>
+        </div>
     </section>
-{% endblock %}
+{% endblock body %}

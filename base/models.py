@@ -6,7 +6,9 @@ STATUS_CHOICES = (
     ('inactive', _('inactive')),
 )
 
-image_dir = r'../media/pictures'
+
+def get_img_upload_path(instance, filename):
+    return f'../media/pictures/{instance.__class__.__name__}/{filename}'
 
 
 class About(models.Model):
@@ -16,7 +18,7 @@ class About(models.Model):
     head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'), null=True, blank=True)
     head3 = models.CharField(max_length=120, verbose_name=_('Head 3'))
     head3_text = models.CharField(max_length=120, verbose_name=_('Text Head 3'), null=True, blank=True)
-    img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir)
+    img = models.ImageField(verbose_name=_('Image'), upload_to=get_img_upload_path)
     img_head = models.CharField(max_length=200, verbose_name=_('Image Head'))
     img_text = models.TextField(verbose_name=_('Image Text'))
     plain_text = models.TextField(verbose_name=_('Plain Text'))
@@ -32,7 +34,7 @@ class About(models.Model):
 
 class AboutPic(models.Model):
     about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='about_pic')
-    pic = models.ImageField(verbose_name=_('About Picture'), upload_to=image_dir)
+    pic = models.ImageField(verbose_name=_('About Picture'), upload_to=get_img_upload_path)
 
     class Meta:
         verbose_name = _('Team Picture')
@@ -44,7 +46,7 @@ class AboutPic(models.Model):
 
 class TeamInfo(models.Model):
     about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='about_team')
-    img = models.ImageField(verbose_name=_('Profile Inmage'), upload_to=image_dir + r'/profile')
+    img = models.ImageField(verbose_name=_('Profile Inmage'), upload_to=get_img_upload_path)
     name = models.CharField(max_length=120, verbose_name=_('Name'))
     bio = models.CharField(max_length=200, verbose_name=_('Bio'))
     fb = models.CharField(max_length=200, verbose_name=_('Facebook link'), blank=True, null=True)
@@ -66,7 +68,7 @@ class Services(models.Model):
     head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'), null=True, blank=True)
     proj_total = models.IntegerField(verbose_name=_('Total Projects'))
     proj_done = models.IntegerField(verbose_name=_('Projects Done'))
-    img = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/service')
+    img = models.ImageField(verbose_name=_('Image'), upload_to=get_img_upload_path)
     img_head = models.CharField(max_length=200, verbose_name=_('Image Head'))
     img_text = models.TextField(verbose_name=_('Image Text'))
     status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='inactive', verbose_name=_('Status'))
@@ -81,7 +83,7 @@ class Services(models.Model):
 
 class ServicesTools(models.Model):
     servicehead = models.ForeignKey(Services, on_delete=models.CASCADE, related_name='service_tools')
-    avator = models.ImageField(verbose_name=_('Avator'), upload_to=image_dir)
+    avator = models.ImageField(verbose_name=_('Avator'), upload_to=get_img_upload_path)
     head_service = models.CharField(max_length=120, verbose_name=_('Service Head'))
     text_service = models.TextField(verbose_name=_('Text Service'))
 
@@ -114,7 +116,7 @@ class Footer(models.Model):
     email = models.CharField(max_length=200, verbose_name=_('Email'))
     phone = models.CharField(max_length=200, verbose_name=_('Phone'))
     head = models.CharField(max_length=200, verbose_name=_('Contact Us Head'))
-    logo = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/logo')
+    logo = models.ImageField(verbose_name=_('Image'), upload_to=get_img_upload_path)
     fb = models.CharField(max_length=200, verbose_name=_('Facebook link'), blank=True, null=True)
     twitter = models.CharField(max_length=200, verbose_name=_('twitter link'), blank=True, null=True)
     ln = models.CharField(max_length=200, verbose_name=_('LinkedIn link'), blank=True, null=True)
@@ -127,7 +129,7 @@ class Footer(models.Model):
 
 
 class Header(models.Model):
-    logo = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/logo')
+    logo = models.ImageField(verbose_name=_('Image'), upload_to=get_img_upload_path)
     status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='inactive', verbose_name=_('Status'))
 
     class Meta:
@@ -143,7 +145,7 @@ class Banners(models.Model):
     head1 = models.CharField(max_length=200, verbose_name=_('Head 1'))
     head2 = models.CharField(max_length=200, verbose_name=_('Head 2'))
     head2_text = models.CharField(max_length=120, verbose_name=_('Text Head 2'), null=True, blank=True)
-    banner = models.ImageField(verbose_name=_('Image'), upload_to=image_dir + r'/banner')
+    banner = models.ImageField(verbose_name=_('Image'), upload_to=get_img_upload_path)
 
     class Meta:
         verbose_name = _('Banner')

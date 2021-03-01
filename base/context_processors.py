@@ -4,12 +4,14 @@ from base.forms import NewslettersForm
 
 def footerdata(request):
     data = Footer.objects.filter(status='active').last()
-    return {'footer': data}
+    logo = str(data.logo).replace('..', '')
+    return {'footer': data, 'logo': logo}
 
 
 def headerdata(request):
     data = Header.objects.filter(status='active').last()
-    return {'header': data}
+    logo = str(data.logo).replace('..', '')
+    return {'header': data, 'logo': logo}
 
 
 def news(request):
