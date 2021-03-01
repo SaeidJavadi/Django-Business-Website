@@ -134,6 +134,9 @@ class Header(models.Model):
         verbose_name = _('Header Control')
         verbose_name_plural = _('Header Control')
 
+    def __str__(self):
+        return str(self.id)
+
 
 class Banners(models.Model):
     header = models.ForeignKey(Header, on_delete=models.CASCADE, related_name='header_banner')
@@ -146,6 +149,9 @@ class Banners(models.Model):
         verbose_name = _('Banner')
         verbose_name_plural = _('Banners')
 
+    def __str__(self):
+        return self.head1
+
 
 class Newsletters(models.Model):
     email = models.CharField(max_length=120, verbose_name=_('Email'))
@@ -154,3 +160,6 @@ class Newsletters(models.Model):
     class Meta:
         verbose_name = _('Newsletters')
         verbose_name_plural = _('Newsletters')
+
+    def __str__(self):
+        return self.email
