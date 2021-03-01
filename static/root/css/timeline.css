@@ -2229,7 +2229,7 @@
 	top: 0;
 	margin: auto;
 	content: "\f102";
-	font-family: FontAwesome;
+  font-family: FontAwesome, serif;
 	color: #DDD;
 	font-size: 36px;
 	margin-left: -10px; 
@@ -2249,7 +2249,7 @@
 	bottom: 0;
 	margin: auto;
 	content: "\f103";
-	font-family: FontAwesome;
+  font-family: FontAwesome, serif;
 	color: #DDD;
 	font-size: 36px;
 	margin-left: -10px; 
