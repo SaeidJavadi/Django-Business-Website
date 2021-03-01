@@ -1,0 +1,32 @@
+/*
+  Flaticon icon font: Flaticon
+  Creation date: 10/07/2018 06:45
+  */
+
+@font-face {
+    font-family: "IRANsans";
+    src: url("../fonts/IRANsans/IRANSansWeb.eot");
+    src: url("../fonts/IRANsans/IRANSansWeb.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/IRANsans/IRANSansWeb.woff") format("woff"),
+    url("../fonts/IRANsans/IRANSansWeb.ttf") format("truetype"),
+    url("../fonts/IRANsans/IRANSansWeb.woff#IRANsans") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family: "IRANsans";
+        src: url("../fonts/IRANsans/IRANSansWeb.woff2#Flaticon") format("woff2");
+    }
+}
+
+[class^="iransans-"]:before, [class*=" iransasn-"]:before,
+[class^="iransasn-"]:after, [class*=" iransans-"]:after {
+    font-family: IRANsans;
+    font-style: normal;
+}
+
+.iransans-reception-bell:before { content: "\f100"; }
+.iransans-wedding:before { content: "\f101"; }
+.iransans-bachelorette-party:before { content: "\f102"; }
