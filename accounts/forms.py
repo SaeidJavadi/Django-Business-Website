@@ -112,3 +112,6 @@ class RegisterForm(forms.ModelForm):
 class ForgetForm(forms.Form):
     email = forms.EmailField(label=_('Email'), widget=forms.EmailInput(
         attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}))
+    idcode = forms.IntegerField(label=_('ID Code'), widget=forms.NumberInput(
+        attrs={'class': 'form-control', 'type': 'tel', 'placeholder': '1234567890', 'maxlength': '10',
+    'minlength': '10', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}))
