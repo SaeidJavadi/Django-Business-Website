@@ -116,7 +116,7 @@ class Footer(models.Model):
     email = models.CharField(max_length=200, verbose_name=_('Email'))
     phone = models.CharField(max_length=200, verbose_name=_('Phone'))
     head = models.CharField(max_length=200, verbose_name=_('Contact Us Head'))
-    logo = models.ImageField(verbose_name=_('Image'), upload_to=get_img_upload_path)
+    logo = models.ImageField(verbose_name=_('Logo'), upload_to=get_img_upload_path)
     fb = models.CharField(max_length=200, verbose_name=_('Facebook link'), blank=True, null=True)
     twitter = models.CharField(max_length=200, verbose_name=_('twitter link'), blank=True, null=True)
     ln = models.CharField(max_length=200, verbose_name=_('LinkedIn link'), blank=True, null=True)
@@ -129,7 +129,7 @@ class Footer(models.Model):
 
 
 class Header(models.Model):
-    logo = models.ImageField(verbose_name=_('Image'), upload_to=get_img_upload_path)
+    logo = models.ImageField(verbose_name=_('Logo'), upload_to=get_img_upload_path)
     status = models.CharField(max_length=60, choices=STATUS_CHOICES, default='inactive', verbose_name=_('Status'))
 
     class Meta:
