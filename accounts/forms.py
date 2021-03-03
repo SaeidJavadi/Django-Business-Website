@@ -134,3 +134,34 @@ class ResetPassword(forms.Form):
         else:
             return password2
 
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email', 'full_name', 'dateofbirth', 'phone', 'idcode']
+
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}),
+            'full_name': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': _('First And Last Name'), 'invalid': 'fuulNameJS()',
+                       'lang': 'fa'}),
+            'phone': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
+                       'minlength': '11', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
+            'idcode': forms.NumberInput(
+                attrs={'class': 'form-control', 'type': 'tel', 'placeholder': '1234567890', 'maxlength': '10',
+                       'minlength': '10', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        tz = timezone('Asia/Tehran')
+        timDel = dt.now(tz)
+        YearNow = int(timDel.strftime("%Y"))
+        YEAR_CHOICES = range(YearNow, 1310, -1)
+        MONTH_CHOICES = {1: 'فروردین', 2: 'اردیبهشت', 3: 'خرداد', 4: 'تیر', 5: 'مرداد', 6: 'شهریور', 7: 'مهر',
+                         8: 'آبان', 9: 'آذر', 10: 'دی', 11: 'بهمن', 12: 'اسفند'}
+        self.fields['dateofbirth'] = forms.DateField(required=True, widget=forms.SelectDateWidget(
+            empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES), label=_('Date Of Birth'))
+

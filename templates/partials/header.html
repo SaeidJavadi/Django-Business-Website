@@ -23,10 +23,10 @@
                     {% else %}
                         <li><a class="nav-link active" style="background:#f2184f;color:#fff;"
                                href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
-                        {#                        <a href="{% url ':dashboard' %}">#}
-                        {#                            <button class="btn btn-success"#}
-                        {#                                    style="margin-left: 4px;">{% trans "Dashboard" %}</button>#}
-                        {#                        </a>#}
+                        <li>
+                            <a class="nav-link active" style="background:#f2184f;color:#fff;"
+                               href="{% url 'accounts:profile' %}">{% trans "Profile" %} {{ request.user.full_name }}</a>
+                        </li>
                     {% endif %}
                     {% if request.user.is_admin %}
                         <li><a class="nav-link active" target="_blank" style="background:#f2184f;color:#fff;"

@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from accounts.forms import LoginForm, RegisterForm, ForgetForm, ResetPassword
+from accounts.forms import LoginForm, RegisterForm, ForgetForm, ResetPassword, EditProfileForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from accounts.models import User
 from accounts.tasks import checkbirth
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 
 def userLogin(request):
@@ -113,3 +115,25 @@ def resetpass(request):
                 return render(request, 'accounts/reset.html', {'form': form})
     else:
         return redirect('base:index')
+
+
+@login_required()
+def profile(request):
+    user = User.objects.get(email=request.user.email)
+    form = EditProfileForm(request.POST or None, instance=user)
+    form_password = ResetPassword(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('updated successfully.'), extra_tags='alert alert-success')
+            return redirect('accounts:profile')
+        if form_password.is_valid():
+            cd = form_password.cleaned_data
+            user.set_password(cd['password1'])
+            user.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, _('Your password has been successfully changed'), 'success')
+            logout(request)
+            return redirect('accounts:login')
+    else:
+        return render(request, 'accounts/profile.html', {'form': form, 'form_password':form_password})
