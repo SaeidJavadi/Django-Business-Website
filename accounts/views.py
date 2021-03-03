@@ -127,7 +127,7 @@ def profile(request):
             form.save()
             messages.success(request, _('updated successfully.'), extra_tags='alert alert-success')
             return redirect('accounts:profile')
-        if form_password.is_valid():
+        elif form_password.is_valid():
             cd = form_password.cleaned_data
             user.set_password(cd['password1'])
             user.save()
@@ -135,5 +135,16 @@ def profile(request):
             messages.success(request, _('Your password has been successfully changed'), 'success')
             logout(request)
             return redirect('accounts:login')
+        else:
+            # cd = form.cleaned_data
+            # error = ''
+            # if User.objects.filter(email=cd['email']).exists():
+            #     error = 'ایمیلی که وارد کرده اید از قبل وجود دارد'
+            # if User.objects.filter(email=cd['phone']).exists():
+            #     error = 'شماره تلفنی که وارد کرده اید از قبل وجود دارد!!'
+            # elif User.objects.filter(idcode=cd['idcode']).exists():
+            #     error = 'کدملی که وارد کرده اید از قبل وجود دارد!!'
+            messages.success(request, _('Error updating your profile!!'), extra_tags='warning')
+            return redirect('accounts:profile')
     else:
         return render(request, 'accounts/profile.html', {'form': form, 'form_password':form_password})
