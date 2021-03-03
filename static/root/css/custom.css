@@ -1,1 +1,12 @@
 /** ADD YOUR AWESOME CODES HERE **/
+
+@import url('iransans.css');
+@import url('iransansBold.css');
+
+.font-iransans {
+    font-family: IRANsans, sans-serif;
+}
+
+.font-iransansBold {
+    font-family: IRANsansBold, sans-serif;
+}

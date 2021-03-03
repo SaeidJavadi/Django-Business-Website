@@ -163,7 +163,7 @@ button:focus {
 }
 
 .form-control::-moz-placeholder {
-    color: #ffffff;
+    color: #999898;
     opacity: 1;
 }
 

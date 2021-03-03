@@ -133,3 +133,4 @@ class ResetPassword(forms.Form):
             raise ValidationError("Passwords don't match")
         else:
             return password2
+

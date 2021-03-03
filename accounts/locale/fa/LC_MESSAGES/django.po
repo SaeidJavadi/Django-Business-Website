@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 17:08+0330\n"
+"POT-Creation-Date: 2021-03-03 19:18+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,10 +35,11 @@ msgid "Accounts"
 msgstr "حساب های کاربری"
 
 #: accounts/forms.py:11 accounts/forms.py:50 accounts/forms.py:54
+#: accounts/forms.py:121
 msgid "Password"
 msgstr "رمزعبور"
 
-#: accounts/forms.py:12 accounts/forms.py:57
+#: accounts/forms.py:12 accounts/forms.py:57 accounts/forms.py:124
 msgid "Password confirmation"
 msgstr "تایید رمزعبور"
 
@@ -53,6 +54,10 @@ msgstr "نام و نام خانوادگی"
 #: accounts/forms.py:94 accounts/models.py:9
 msgid "Date Of Birth"
 msgstr "تاریخ تولد"
+
+#: accounts/forms.py:115 accounts/models.py:11
+msgid "ID Code"
+msgstr "کد ملی"
 
 #: accounts/managers.py:8
 msgid "Users must have an email "
@@ -78,10 +83,6 @@ msgstr "کدملی باید وارد شود"
 msgid "Phone Number"
 msgstr "شماره موبایل"
 
-#: accounts/models.py:11
-msgid "ID Code"
-msgstr "کد ملی"
-
 #: accounts/models.py:12
 msgid "is Admin"
 msgstr "دسترسی مدیر"
@@ -98,15 +99,18 @@ msgstr "کاربر"
 msgid "Users"
 msgstr "کاربران"
 
-#: accounts/templates/accounts/forget.html:12
-msgid "Forget password"
+#: accounts/templates/accounts/forget.html:4
+#: accounts/templates/accounts/forget.html:15
+msgid "Forget Password"
 msgstr "فراموشی رمزعبور"
 
-#: accounts/templates/accounts/forget.html:20
-msgid "Enter an email you forgot your password to"
-msgstr "ایمیلی که رمز آن را فراموش کرده اید را وارد کنید"
+#: accounts/templates/accounts/forget.html:22
+msgid "Enter an email and ID code you forgot your password to"
+msgstr "ایمیل و کدملی حسابی که رمز آن را فراموش کرده اید را وارد کنید"
 
-#: accounts/templates/accounts/forget.html:23
+#: accounts/templates/accounts/forget.html:25
+#: accounts/templates/accounts/reset.html:5
+#: accounts/templates/accounts/reset.html:19
 msgid "Reset Password"
 msgstr "ریست رمزعبور"
 
@@ -124,15 +128,15 @@ msgstr "ما هرگز اطلاعات حساب شما را با بقیه به ا�
 msgid "Forget Your Password?"
 msgstr "رمزتان را فراموش کرده اید؟"
 
-#: accounts/templates/accounts/login.html:26
+#: accounts/templates/accounts/login.html:27
 msgid "Login"
 msgstr "ورود"
 
-#: accounts/templates/accounts/login.html:27
+#: accounts/templates/accounts/login.html:29
 msgid "OR"
 msgstr "یا"
 
-#: accounts/templates/accounts/login.html:29
+#: accounts/templates/accounts/login.html:32
 msgid "Sign up"
 msgstr "ثبت نام"
 
@@ -149,45 +153,58 @@ msgstr "مشخصات خود را وارد کنید"
 msgid "Register"
 msgstr "ثبت نام"
 
-#: accounts/views.py:19
+#: accounts/templates/accounts/reset.html:26
+msgid "Enter Your New Password"
+msgstr "رمزعبور جدید خود را وارد کنید"
+
+#: accounts/templates/accounts/reset.html:29
+msgid "Apply"
+msgstr "تایید"
+
+#: accounts/views.py:21
 msgid "logged in successfully"
 msgstr "با موفقیت وارد شدید"
 
-#: accounts/views.py:22
+#: accounts/views.py:24
 msgid "your Email Or Password is wrong"
 msgstr "ایمیل یا رمز ورود شما اشتباه است"
 
-#: accounts/views.py:24
+#: accounts/views.py:26
 msgid "No account created with this email"
 msgstr "هیچ حسابی با این ایمیل ایجاد نشده است"
 
-#: accounts/views.py:28
+#: accounts/views.py:30
 msgid "Please enter your information correctly"
 msgstr "لطفا اطلاعات خود را به درستی وارد کنید"
 
-#: accounts/views.py:49
+#: accounts/views.py:55
 msgid "you registered successfully"
 msgstr "حساب شما با موفقیت ایجاد شد"
 
-#: accounts/views.py:52
-msgid "this idcode is exists"
-msgstr ""
-
-#: accounts/views.py:54
-msgid "this phone is exists"
-msgstr ""
-
-#: accounts/views.py:56
-msgid "People under the age of 18 are not allowed to register"
-msgstr ""
-
 #: accounts/views.py:58
-msgid "this Email is exists"
-msgstr ""
+msgid "this idcode is exists"
+msgstr "این کدملی از قبل وجود دارد"
 
-#: accounts/views.py:64
+#: accounts/views.py:60
+msgid "this phone is exists"
+msgstr "این شماره تلفن از قبل وجود دارد"
+
+#: accounts/views.py:62
+msgid "People under the age of 18 are not allowed to register"
+msgstr "افراد زیر 18 سال مجاز به ثبت نام نیستند"
+
+#: accounts/views.py:65
+msgid "this Email is exists"
+msgstr "این ایمیل از قبل وجود دارد"
+
+#: accounts/views.py:73
 msgid "you logged out successfully"
 msgstr "با موفقیت خارج شدید"
 
-#~ msgid "Passwords must be the same"
-#~ msgstr "رمزهای عبور باید یکسان باشند"
+#: accounts/views.py:88
+msgid "No account created with this email and ID code"
+msgstr "حسابی با این ایمیل و کدملی ایجاد نشده است"
+
+#: accounts/views.py:108
+msgid "Your password has been successfully changed"
+msgstr "رمز عبور شما با موفقیت تغییر کرد"

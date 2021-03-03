@@ -6,7 +6,7 @@
 {% endblock title %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'accounts/css/custom.css' %}">
-{% endblock %}
+{% endblock head%}
 {% block body %}
     <section class="bg-texture">
         <div class="row">
@@ -15,10 +15,10 @@
                 <div class="animated rubberBand"
                      style="background: #1f1f1f; border-radius: 5px; padding: 20px; color: #ffffff;">
                     <div dir="rtl" style="text-align: right">
-                        <h3 class="text-center" style="color: #36ff00"><b>{% trans "Register Form" %}</b></h3>
+                        <h3 class="text-center font-iransansBold" style="color: #36ff00"><b>{% trans "Register Form" %}</b></h3>
                         <hr style="border:1px solid green;border-radius:3px;">
 
-                        <form method="post">
+                        <form method="post" class="font-iransansBold">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="username">{% trans "Enter your Specifications" %}:</label>

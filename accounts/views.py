@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from accounts.forms import LoginForm, RegisterForm, ForgetForm
+from accounts.forms import LoginForm, RegisterForm, ForgetForm, ResetPassword
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from accounts.models import User
 from accounts.tasks import checkbirth
+from django.contrib.auth import update_session_auth_hash
 
 
 def userLogin(request):
@@ -80,16 +81,35 @@ def ForgetPage(request):
             if form.is_valid():
                 cd = form.cleaned_data
                 if User.objects.filter(email=cd['email'], idcode=cd['idcode']).exists():
-                    Profile = User.objects.filter(email=cd['email'], idcode=cd['idcode'])
-                    user = authenticate(request,username=Profile.email)
-                    if user:
-                        pass
+                    request.session['email'] = cd['email']
+                    request.session['idcode'] = cd['idcode']
+                    return redirect('accounts:reset')
                 else:
                     messages.error(request, _('No account created with this email and ID code'),
                                    'warning')
                     return redirect('accounts:forget')
         else:
             form = ForgetForm()
-        return render(request, 'accounts/forget.html', {'form': form})
+            return render(request, 'accounts/forget.html', {'form': form})
+    else:
+        return redirect('base:index')
+
+
+def resetpass(request):
+    if not request.user.is_active:
+        if request.method == 'POST':
+            form = ResetPassword(request.POST)
+            if form.is_valid():
+                cd = form.cleaned_data
+                user = User.objects.get(email=request.session['email'], idcode=request.session['idcode'])
+                user.set_password(cd['password1'])
+                user.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, _('Your password has been successfully changed'), 'success')
+                return redirect('accounts:login')
+        else:
+            if request.session['email'] and request.session['idcode']:
+                form = ResetPassword()
+                return render(request, 'accounts/reset.html', {'form': form})
     else:
         return redirect('base:index')
