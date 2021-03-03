@@ -114,4 +114,22 @@ class ForgetForm(forms.Form):
         attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}))
     idcode = forms.IntegerField(label=_('ID Code'), widget=forms.NumberInput(
         attrs={'class': 'form-control', 'type': 'tel', 'placeholder': '1234567890', 'maxlength': '10',
-    'minlength': '10', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}))
+               'minlength': '10', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}))
+
+
+class ResetPassword(forms.Form):
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password', 'dir': 'ltr', 'onChange': 'onChange()',
+               'minlength': '8'}))
+    password2 = forms.CharField(label=_('Password confirmation'),
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-control', 'placeholder': 'Re-Enter Password',
+                                           'dir': 'ltr', 'onChange': 'onChange()'}))
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise ValidationError("Passwords don't match")
+        else:
+            return password2

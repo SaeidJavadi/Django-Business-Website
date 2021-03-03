@@ -48,18 +48,20 @@ def userRegister(request):
                             if not User.objects.filter(idcode=cd['idcode']).exists():
                                 user = User.objects.create_user(email=cd['email'], full_name=cd['full_name'],
                                                                 dateofbirth=cd['dateofbirth'],
-                                                                phone=cd['phone'], idcode=cd['idcode'], password=cd['password1'])
+                                                                phone=cd['phone'], idcode=cd['idcode'],
+                                                                password=cd['password1'])
                                 user.save()
                                 messages.success(request, _('you registered successfully'), 'success')
                                 return redirect('accounts:login')
                             else:
-                                messages.success(request,_('this idcode is exists'))
+                                messages.success(request, _('this idcode is exists'))
                         else:
-                            messages.success(request,_('this phone is exists'))
+                            messages.success(request, _('this phone is exists'))
                     else:
-                        messages.success(request, _('People under the age of 18 are not allowed to register'), 'warning')
+                        messages.success(request, _('People under the age of 18 are not allowed to register'),
+                                         'warning')
                 else:
-                    messages.success(request, _('this Email is exists'),'warning')
+                    messages.success(request, _('this Email is exists'), 'warning')
         return render(request, 'accounts/register.html', {'form': form})
     else:
         return redirect('base:index')
@@ -72,9 +74,22 @@ def LogoutPage(request):
 
 
 def ForgetPage(request):
-    if request.method == 'POST':
-        form = ForgetForm(request.POST)
-        pass
+    if not request.user.is_active:
+        if request.method == 'POST':
+            form = ForgetForm(request.POST)
+            if form.is_valid():
+                cd = form.cleaned_data
+                if User.objects.filter(email=cd['email'], idcode=cd['idcode']).exists():
+                    Profile = User.objects.filter(email=cd['email'], idcode=cd['idcode'])
+                    user = authenticate(request,username=Profile.email)
+                    if user:
+                        pass
+                else:
+                    messages.error(request, _('No account created with this email and ID code'),
+                                   'warning')
+                    return redirect('accounts:forget')
+        else:
+            form = ForgetForm()
+        return render(request, 'accounts/forget.html', {'form': form})
     else:
-        form = ForgetForm()
-    return render(request, 'accounts/forget.html', {'form': form})
+        return redirect('base:index')
