@@ -11,7 +11,7 @@ class User(AbstractBaseUser):
     dateofbirth = models.DateField(verbose_name=_('Date Of Birth'))
     phone = models.IntegerField(verbose_name=_('Phone Number'), unique=True)
     phone_confirm = models.BooleanField(default=False, verbose_name=_('Phone Confirm'))
-    idcode = models.IntegerField(verbose_name=_('ID Code'), unique=True)
+    idcode = models.CharField(max_length=10, verbose_name=_('ID Code'), unique=True)
     is_admin = models.BooleanField(default=False, verbose_name=_('is Admin'))
     is_active = models.BooleanField(default=True, verbose_name=_('is Active'))
 
