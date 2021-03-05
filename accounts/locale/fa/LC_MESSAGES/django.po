@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 20:35+0330\n"
+"POT-Creation-Date: 2021-03-05 13:36+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,30 +34,34 @@ msgstr "مجوزها"
 msgid "Accounts"
 msgstr "حساب های کاربری"
 
-#: accounts/forms.py:11 accounts/forms.py:50 accounts/forms.py:54
-#: accounts/forms.py:121
+#: accounts/forms.py:11 accounts/forms.py:52 accounts/forms.py:56
+#: accounts/forms.py:123
 msgid "Password"
 msgstr "رمزعبور"
 
-#: accounts/forms.py:12 accounts/forms.py:57 accounts/forms.py:124
+#: accounts/forms.py:12 accounts/forms.py:59 accounts/forms.py:126
 msgid "Password confirmation"
 msgstr "تایید رمزعبور"
 
-#: accounts/forms.py:47 accounts/forms.py:113 accounts/models.py:7
+#: accounts/forms.py:49 accounts/forms.py:115 accounts/models.py:8
 msgid "Email"
 msgstr "ایمیل"
 
-#: accounts/forms.py:71 accounts/forms.py:147 accounts/models.py:8
+#: accounts/forms.py:73 accounts/forms.py:150 accounts/models.py:10
 msgid "First And Last Name"
 msgstr "نام و نام خانوادگی"
 
-#: accounts/forms.py:94 accounts/forms.py:166 accounts/models.py:9
+#: accounts/forms.py:96 accounts/forms.py:169 accounts/models.py:11
 msgid "Date Of Birth"
 msgstr "تاریخ تولد"
 
-#: accounts/forms.py:115 accounts/models.py:11
+#: accounts/forms.py:117 accounts/models.py:14
 msgid "ID Code"
 msgstr "کد ملی"
+
+#: accounts/forms.py:173 accounts/forms.py:174 accounts/models.py:55
+msgid "Confirm Code"
+msgstr "کد اعتبارسنجی"
 
 #: accounts/managers.py:8
 msgid "Users must have an email "
@@ -79,25 +83,49 @@ msgstr "تاریخ تولد باید وارد شود"
 msgid "ID Code must be entered"
 msgstr "کدملی باید وارد شود"
 
-#: accounts/models.py:10
+#: accounts/models.py:9
+msgid "Email Confirm"
+msgstr "اعتبارسنجی ایمیل"
+
+#: accounts/models.py:12
 msgid "Phone Number"
 msgstr "شماره موبایل"
 
-#: accounts/models.py:12
+#: accounts/models.py:13
+msgid "Phone Confirm"
+msgstr "اعتبارسنجی شماره موبایل"
+
+#: accounts/models.py:15
 msgid "is Admin"
 msgstr "دسترسی مدیر"
 
-#: accounts/models.py:13
+#: accounts/models.py:16
 msgid "is Active"
 msgstr "فعال"
 
-#: accounts/models.py:35
+#: accounts/models.py:17
+msgid "Join Date"
+msgstr "زمان عضویت"
+
+#: accounts/models.py:38 accounts/models.py:47
 msgid "User"
 msgstr "کاربر"
 
-#: accounts/models.py:36
+#: accounts/models.py:39
 msgid "Users"
 msgstr "کاربران"
+
+#: accounts/models.py:48
+msgid "Email Code"
+msgstr "کد اعتبارسنجی ایمیل"
+
+#: accounts/models.py:49
+msgid "Phone Code"
+msgstr "کد اعتبارسنجی شماره موبایل"
+
+#: accounts/models.py:56
+msgid "Confirm Codes"
+msgstr "کدهای اعتبارسنجی"
 
 #: accounts/templates/accounts/forget.html:4
 #: accounts/templates/accounts/forget.html:15
@@ -150,9 +178,13 @@ msgstr "فرم ویرایش پروفایل"
 msgid "Enter your Specifications"
 msgstr "مشخصات خود را وارد کنید"
 
-#: accounts/templates/accounts/profile.html:31
-msgid "Edit"
-msgstr "ویرایش"
+#: accounts/templates/accounts/profile.html:32
+msgid "Edit Profile"
+msgstr "ویرایش پروفایل"
+
+#: accounts/templates/accounts/profile.html:36
+msgid "Send Confirm Code for Your Number"
+msgstr "ارسال کد اعتبارسنجی به شماره شما"
 
 #: accounts/templates/accounts/register.html:5
 #: accounts/templates/accounts/register.html:18
@@ -175,58 +207,77 @@ msgstr "رمزعبور جدید خود را وارد کنید"
 msgid "Apply"
 msgstr "تایید"
 
-#: accounts/views.py:23
+#: accounts/templates/accounts/verify.html:4
+msgid "Verify Page"
+msgstr "فرم تایید"
+
+#: accounts/templates/accounts/verify.html:15
+msgid "Verify Confirm"
+msgstr "تایید اعتبارسنجی"
+
+#: accounts/templates/accounts/verify.html:22
+msgid "Confirm Code for you send"
+msgstr "کد اعتبارسنجی برای شما ارسال شد"
+
+#: accounts/templates/accounts/verify.html:25
+msgid "Verify"
+msgstr "تایید"
+
+#: accounts/views.py:26
 msgid "logged in successfully"
 msgstr "با موفقیت وارد شدید"
 
-#: accounts/views.py:26
+#: accounts/views.py:29
 msgid "your Email Or Password is wrong"
 msgstr "ایمیل یا رمز ورود شما اشتباه است"
 
-#: accounts/views.py:28
+#: accounts/views.py:31
 msgid "No account created with this email"
 msgstr "هیچ حسابی با این ایمیل ایجاد نشده است"
 
-#: accounts/views.py:32
+#: accounts/views.py:35
 msgid "Please enter your information correctly"
 msgstr "لطفا اطلاعات خود را به درستی وارد کنید"
 
-#: accounts/views.py:57
+#: accounts/views.py:60
 msgid "you registered successfully"
 msgstr "حساب شما با موفقیت ایجاد شد"
 
-#: accounts/views.py:60
+#: accounts/views.py:63
 msgid "this idcode is exists"
 msgstr "این کدملی از قبل وجود دارد"
 
-#: accounts/views.py:62
+#: accounts/views.py:65
 msgid "this phone is exists"
 msgstr "این شماره تلفن از قبل وجود دارد"
 
-#: accounts/views.py:64
+#: accounts/views.py:67
 msgid "People under the age of 18 are not allowed to register"
 msgstr "افراد زیر 18 سال مجاز به ثبت نام نیستند"
 
-#: accounts/views.py:67
+#: accounts/views.py:70
 msgid "this Email is exists"
 msgstr "این ایمیل از قبل وجود دارد"
 
-#: accounts/views.py:75
+#: accounts/views.py:78
 msgid "you logged out successfully"
 msgstr "با موفقیت خارج شدید"
 
-#: accounts/views.py:90
+#: accounts/views.py:93
 msgid "No account created with this email and ID code"
 msgstr "حسابی با این ایمیل و کدملی ایجاد نشده است"
 
-#: accounts/views.py:110
+#: accounts/views.py:113 accounts/views.py:138
 msgid "Your password has been successfully changed"
 msgstr "رمز عبور شما با موفقیت تغییر کرد"
 
-#: accounts/views.py:128
+#: accounts/views.py:131
 msgid "updated successfully."
 msgstr "بروزرسانی پروفایل شما با موفقیت انجام شد."
 
-#: accounts/views.py:131
+#: accounts/views.py:150
 msgid "Error updating your profile!!"
 msgstr "خطا در به روزرسانی پروفایل شما !!"
+
+#~ msgid "Edit"
+#~ msgstr "ویرایش"

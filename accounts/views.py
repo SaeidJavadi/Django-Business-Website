@@ -1,13 +1,16 @@
+from random import randint
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from accounts.forms import LoginForm, RegisterForm, ForgetForm, ResetPassword, EditProfileForm
+from accounts.forms import LoginForm, RegisterForm, ForgetForm, ResetPassword, EditProfileForm, VerifyForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from accounts.models import User
 from accounts.tasks import checkbirth
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
+# from django.views import View
+# from django.contrib.auth.mixins import LoginRequiredMixin
+# from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 
 def userLogin(request):
@@ -147,4 +150,16 @@ def profile(request):
             messages.success(request, _('Error updating your profile!!'), extra_tags='warning')
             return redirect('accounts:profile')
     else:
-        return render(request, 'accounts/profile.html', {'form': form, 'form_password':form_password})
+        return render(request, 'accounts/profile.html', {'user':user, 'form': form, 'form_password':form_password})
+
+
+@login_required()
+def verify(request):
+    user = User.objects.get(email=request.user.email)
+    if request.method == 'POST':
+        pass
+    else:
+        form = VerifyForm()
+        code = randint(1000,9999)
+        ## method send
+        return render(request, 'accounts/verify.html', {'form':form})

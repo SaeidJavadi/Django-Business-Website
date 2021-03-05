@@ -13,7 +13,8 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'full_name', 'dateofbirth', 'phone', 'idcode', 'is_active', 'is_admin')
+        fields = ('email', 'email_confirm', 'full_name', 'dateofbirth', 'phone', 'phone_confirm', 'idcode', 'is_active',
+                  'is_admin')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -35,7 +36,8 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'full_name', 'dateofbirth', 'phone', 'idcode', 'is_active', 'is_admin')
+        fields = ('email', 'email_confirm', 'full_name', 'dateofbirth', 'phone', 'phone_confirm', 'idcode', 'is_active',
+                  'is_admin')
 
     def clean_password(self):
         return self.initial["password"]
@@ -61,7 +63,7 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'full_name', 'dateofbirth', 'phone', 'idcode')
+        fields = ('email', 'full_name', 'dateofbirth', 'idcode', 'phone')
 
         widgets = {
             # 'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr', 'oninvalid':"setCustomValidity('لطفا ادرس ایمیل خود را وارد کنید')"}),
@@ -138,20 +140,21 @@ class ResetPassword(forms.Form):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['email', 'full_name', 'dateofbirth', 'phone', 'idcode']
+        fields = ['email', 'full_name', 'dateofbirth', 'idcode', 'phone']
 
         widgets = {
             'email': forms.EmailInput(
-                attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr'}),
+                attrs={'class': 'form-control', 'placeholder': 'example@gmail.com', 'dir': 'ltr',
+                       'readonly': 'readonly'}),
             'full_name': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': _('First And Last Name'), 'invalid': 'fuulNameJS()',
                        'lang': 'fa'}),
-            'phone': forms.NumberInput(
-                attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
-                       'minlength': '11', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
             'idcode': forms.NumberInput(
                 attrs={'class': 'form-control', 'type': 'tel', 'placeholder': '1234567890', 'maxlength': '10',
                        'minlength': '10', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
+            'phone': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
+                       'minlength': '11', 'dir': 'ltr', 'onkeypress': 'return isNumber(event)'}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -165,3 +168,7 @@ class EditProfileForm(forms.ModelForm):
         self.fields['dateofbirth'] = forms.DateField(required=True, widget=forms.SelectDateWidget(
             empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES), label=_('Date Of Birth'))
 
+
+class VerifyForm(forms.Form):
+    code = forms.IntegerField(label=_('Confirm Code'), widget=forms.NumberInput(
+        attrs={'class': 'form-control', 'placeholder': _('Confirm Code'), 'type': 'tel', 'style':'text-align:center'}))

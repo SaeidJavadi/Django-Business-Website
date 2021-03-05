@@ -14,6 +14,7 @@ class User(AbstractBaseUser):
     idcode = models.CharField(max_length=10, verbose_name=_('ID Code'), unique=True)
     is_admin = models.BooleanField(default=False, verbose_name=_('is Admin'))
     is_active = models.BooleanField(default=True, verbose_name=_('is Active'))
+    joindate = models.DateTimeField(auto_now=True, verbose_name=_('Join Date'))
 
     objects = UserManager()
 
@@ -43,7 +44,7 @@ class User(AbstractBaseUser):
 
 
 class ConfirmCode(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'), related_name='user_code')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'), related_name='code')
     email_code = models.IntegerField(verbose_name=_('Email Code'))
     phone_code = models.IntegerField(verbose_name=_('Phone Code'))
 
