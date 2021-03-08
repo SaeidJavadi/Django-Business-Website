@@ -45,8 +45,8 @@ class User(AbstractBaseUser):
 
 class ConfirmCode(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'), related_name='code')
-    email_code = models.IntegerField(verbose_name=_('Email Code'))
-    phone_code = models.IntegerField(verbose_name=_('Phone Code'))
+    email_code = models.IntegerField(verbose_name=_('Email Code'), null=True, blank=True)
+    phone_code = models.IntegerField(verbose_name=_('Phone Code'), null=True, blank=True)
 
     def __str__(self):
         return self.user.full_name

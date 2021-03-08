@@ -8,6 +8,7 @@ from accounts.models import User
 from accounts.tasks import checkbirth
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from accounts.models import ConfirmCode
 # from django.views import View
 # from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.views.decorators.csrf import csrf_exempt, csrf_protect
@@ -156,10 +157,24 @@ def profile(request):
 @login_required()
 def verify(request):
     user = User.objects.get(email=request.user.email)
-    if request.method == 'POST':
-        pass
+    if request.method == 'POST' and (request.session['phone'] and request.session['email']) :
+        form = VerifyForm(request.POST)
+        codeC = ConfirmCode.objects.get(user=user)
+        if form.is_valid():
+            if request.session['phone']:
+                if codeC.phone_code == form.cleaned_data['code']:
+                    user.phone_confirm = True
+                    messages.success(request, _('Your phone number was approved'), 'alert alert-success')
+                    return redirect('accounts:profile')
     else:
-        form = VerifyForm()
-        code = randint(1000,9999)
-        ## method send
-        return render(request, 'accounts/verify.html', {'form':form})
+        if not ConfirmCode.objects.filter(user=user).exists():
+            form = VerifyForm()
+            # code = randint(1000,9999)
+            ## method sendMessage
+            code = 1234
+            c = ConfirmCode.objects.create(user=user, phone_code=code)
+            c.save()
+            request.session['phone'] = 1
+            return render(request, 'accounts/verify.html', {'form':form})
+        else:
+            return redirect('accounts:profile')

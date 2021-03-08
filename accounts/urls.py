@@ -9,5 +9,5 @@ urlpatterns = [
     path('forget/', views.ForgetPage, name='forget'),
     path('reset/', views.resetpass, name='reset'),
     path('profile/', views.profile, name='profile'),
-    path('verify', views.verify, name='verify')
+    path('verify/', views.verify, name='verify')
 ]
