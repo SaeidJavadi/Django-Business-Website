@@ -150,7 +150,7 @@ msgstr "فرم ورود"
 #: accounts/templates/accounts/profile.html:28
 #: accounts/templates/accounts/register.html:27
 msgid "We'll never share your phone number with anyone else."
-msgstr "ما هرگز اطلاعات حساب شما را با بقیه به اشتراک نمی گذاریم."
+msgstr "ما هرگز اطلاعات حساب شما را با کسی به اشتراک نمی گذاریم."
 
 #: accounts/templates/accounts/login.html:24
 msgid "Forget Your Password?"
@@ -281,7 +281,7 @@ msgstr "خطا در به روزرسانی پروفایل شما !!"
 
 #: accounts/views.py:169
 msgid "Your phone number was approved"
-msgstr "شماره تلفن شما تأیید شد"
+msgstr "شماره تلفن شما تایید شد"
 
 #: accounts/views.py:172
 msgid "Validation has been faced with trouble, then try"
