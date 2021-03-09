@@ -157,24 +157,36 @@ def profile(request):
 @login_required()
 def verify(request):
     user = User.objects.get(email=request.user.email)
-    if request.method == 'POST' and (request.session['phone'] and request.session['email']) :
+    if request.method == 'POST' and request.session['phone'] :
         form = VerifyForm(request.POST)
         codeC = ConfirmCode.objects.get(user=user)
         if form.is_valid():
+            print('form valid')
             if request.session['phone']:
                 if codeC.phone_code == form.cleaned_data['code']:
                     user.phone_confirm = True
+                    user.save()
                     messages.success(request, _('Your phone number was approved'), 'alert alert-success')
                     return redirect('accounts:profile')
+        else:
+            messages.success(request, _('Validation has been faced with trouble, then try', 'warning'))
+            return redirect('accounts:profile')
     else:
-        if not ConfirmCode.objects.filter(user=user).exists():
+        if not user.phone_confirm:
             form = VerifyForm()
             # code = randint(1000,9999)
             ## method sendMessage
             code = 1234
-            c = ConfirmCode.objects.create(user=user, phone_code=code)
-            c.save()
+            uc = ConfirmCode.objects.filter(user=user).exists()
+            if uc:
+                userCode = ConfirmCode.objects.get(user=user)
+                userCode.phone_code = code
+                userCode.save()
+            else:
+                c = ConfirmCode.objects.create(user=user, phone_code=code)
+                c.save()
             request.session['phone'] = 1
+            messages.success(request, _('The confirmation code was sent to your mobile number'), 'alert alert-success')
             return render(request, 'accounts/verify.html', {'form':form})
         else:
             return redirect('accounts:profile')

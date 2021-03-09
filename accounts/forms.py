@@ -159,6 +159,8 @@ class EditProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
+        usr = kwargs['instance']
+        phone_confirm = usr.phone_confirm
         tz = timezone('Asia/Tehran')
         timDel = dt.now(tz)
         YearNow = int(timDel.strftime("%Y"))
@@ -167,8 +169,12 @@ class EditProfileForm(forms.ModelForm):
                          8: 'آبان', 9: 'آذر', 10: 'دی', 11: 'بهمن', 12: 'اسفند'}
         self.fields['dateofbirth'] = forms.DateField(required=True, widget=forms.SelectDateWidget(
             empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES), label=_('Date Of Birth'))
+        if phone_confirm:
+            self.fields['phone'] = forms.IntegerField(label=_('Phone Number'), widget=forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': '09 - - - - - - - - -', 'type': 'tel', 'maxlength': '11',
+                       'minlength': '11', 'dir': 'ltr', 'readonly': 'readonly'}))
 
 
 class VerifyForm(forms.Form):
     code = forms.IntegerField(label=_('Confirm Code'), widget=forms.NumberInput(
-        attrs={'class': 'form-control', 'placeholder': _('Confirm Code'), 'type': 'tel', 'style':'text-align:center'}))
+        attrs={'class': 'form-control', 'placeholder': _('Confirm Code'), 'type': 'tel', 'style': 'text-align:center'}))

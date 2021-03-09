@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-08 20:53+0330\n"
+"POT-Creation-Date: 2021-03-09 19:34+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr "ایمیل"
 msgid "First And Last Name"
 msgstr "نام و نام خانوادگی"
 
-#: accounts/forms.py:96 accounts/forms.py:169 accounts/models.py:11
+#: accounts/forms.py:96 accounts/forms.py:171 accounts/models.py:11
 msgid "Date Of Birth"
 msgstr "تاریخ تولد"
 
@@ -59,7 +59,11 @@ msgstr "تاریخ تولد"
 msgid "ID Code"
 msgstr "کد ملی"
 
-#: accounts/forms.py:173 accounts/forms.py:174 accounts/models.py:55
+#: accounts/forms.py:173 accounts/models.py:12
+msgid "Phone Number"
+msgstr "شماره موبایل"
+
+#: accounts/forms.py:179 accounts/forms.py:180 accounts/models.py:55
 msgid "Confirm Code"
 msgstr "کد اعتبارسنجی"
 
@@ -86,10 +90,6 @@ msgstr "کدملی باید وارد شود"
 #: accounts/models.py:9
 msgid "Email Confirm"
 msgstr "اعتبارسنجی ایمیل"
-
-#: accounts/models.py:12
-msgid "Phone Number"
-msgstr "شماره موبایل"
 
 #: accounts/models.py:13
 msgid "Phone Confirm"
@@ -223,61 +223,73 @@ msgstr "کد اعتبارسنجی برای شما ارسال شد"
 msgid "Verify"
 msgstr "تایید"
 
-#: accounts/views.py:26
+#: accounts/views.py:27
 msgid "logged in successfully"
 msgstr "با موفقیت وارد شدید"
 
-#: accounts/views.py:29
+#: accounts/views.py:30
 msgid "your Email Or Password is wrong"
 msgstr "ایمیل یا رمز ورود شما اشتباه است"
 
-#: accounts/views.py:31
+#: accounts/views.py:32
 msgid "No account created with this email"
 msgstr "هیچ حسابی با این ایمیل ایجاد نشده است"
 
-#: accounts/views.py:35
+#: accounts/views.py:36
 msgid "Please enter your information correctly"
 msgstr "لطفا اطلاعات خود را به درستی وارد کنید"
 
-#: accounts/views.py:60
+#: accounts/views.py:61
 msgid "you registered successfully"
 msgstr "حساب شما با موفقیت ایجاد شد"
 
-#: accounts/views.py:63
+#: accounts/views.py:64
 msgid "this idcode is exists"
 msgstr "این کدملی از قبل وجود دارد"
 
-#: accounts/views.py:65
+#: accounts/views.py:66
 msgid "this phone is exists"
 msgstr "این شماره تلفن از قبل وجود دارد"
 
-#: accounts/views.py:67
+#: accounts/views.py:68
 msgid "People under the age of 18 are not allowed to register"
 msgstr "افراد زیر 18 سال مجاز به ثبت نام نیستند"
 
-#: accounts/views.py:70
+#: accounts/views.py:71
 msgid "this Email is exists"
 msgstr "این ایمیل از قبل وجود دارد"
 
-#: accounts/views.py:78
+#: accounts/views.py:79
 msgid "you logged out successfully"
 msgstr "با موفقیت خارج شدید"
 
-#: accounts/views.py:93
+#: accounts/views.py:94
 msgid "No account created with this email and ID code"
 msgstr "حسابی با این ایمیل و کدملی ایجاد نشده است"
 
-#: accounts/views.py:113 accounts/views.py:138
+#: accounts/views.py:114 accounts/views.py:139
 msgid "Your password has been successfully changed"
 msgstr "رمز عبور شما با موفقیت تغییر کرد"
 
-#: accounts/views.py:131
+#: accounts/views.py:132
 msgid "updated successfully."
 msgstr "بروزرسانی پروفایل شما با موفقیت انجام شد."
 
-#: accounts/views.py:150
+#: accounts/views.py:151
 msgid "Error updating your profile!!"
 msgstr "خطا در به روزرسانی پروفایل شما !!"
+
+#: accounts/views.py:169
+msgid "Your phone number was approved"
+msgstr "شماره تلفن شما تأیید شد"
+
+#: accounts/views.py:172
+msgid "Validation has been faced with trouble, then try"
+msgstr "اعتبار سنجی با مشکل روبرو شده است ، مجدد امتحان کنید"
+
+#: accounts/views.py:189
+msgid "The confirmation code was sent to your mobile number"
+msgstr "کد تایید به شماره موبایل شما ارسال شد"
 
 #~ msgid "Edit"
 #~ msgstr "ویرایش"
