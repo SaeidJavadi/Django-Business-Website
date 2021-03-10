@@ -9,8 +9,11 @@ def index(request):
     header = Header.objects.filter(status='active').last()
     about = About.objects.filter(status='active').last()
     service = Services.objects.filter(status='active').last()
-    return render(request, template_name='base/index.html',
-                  context={'header': header, 'about': about, 'service': service})
+    if header and about and service:
+        return render(request, template_name='base/index.html',
+                      context={'header': header, 'about': about, 'service': service})
+    else:
+        return render(request, 'base/start.html')
 
 
 def about(request):
