@@ -1,0 +1,61 @@
+{% load custom_tags %}
+<!-- section -->
+<div class="section layout_padding dark_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 center">
+                <div>
+                    <div class="heading_main white_fonts">
+                        <div>
+                            <h2><span class="theme_color">{{ service.head2 }}</span></h2>
+                            {% if service.head2_text %}
+                                <p class="large">{{ service.head2_text }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top_30 counter_section" >
+            <div class="col-sm-12 col-md-4">
+                <div class="counter margin-top_30">
+                    <h2 class="timer count-title count-number" data-to="{{ service.proj_total }}"
+                        data-speed="1500"></h2>
+                    <p class="count-text">Number of projects</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="counter margin-top_30">
+
+                    <h2 class="timer count-title count-number" data-to="{{ service.proj_done }}" data-speed="1500"></h2>
+                    <p class="count-text" style="font-size: 19px">Completed projects</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="counter margin-top_30">
+
+                    <h2 class="timer count-title count-number" data-to="{% usercounter %}" data-speed="1500"></h2>
+                    <p class="count-text">Number of members</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->
+<!-- section -->
+<div class="section dark_bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 white_fonts layout_padding padding_left_right">
+                <h3 class="small_heading">{{ service.img_head }}</h3>
+                <p>{{ service.img_text }}</p>
+            </div>
+            <div class="col-lg-6 col-md-12 text_align_center padding_0">
+                <div class="full">
+                    <img class="img-responsive" src="{{ service.img }}" alt="#"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->

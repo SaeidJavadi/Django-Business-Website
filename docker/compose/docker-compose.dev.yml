@@ -1,0 +1,23 @@
+services:
+  backenddev:
+    build:
+      context: ../../
+      dockerfile: docker/dockerfiles/dev.Dockerfile
+    image: businessweb:dev
+    pull_policy: never
+    container_name: BusinessWeb_dev
+    restart: always
+    working_dir: /app
+    volumes:
+      - ../../backend:/app
+    ports:
+      - "127.0.0.1:8002:8000" # Only accessible from server itself
+    environment:
+      - DEBUG=True
+    command: >
+      sh -c "
+      if [ ! -f .env ]; then
+        cp .env.example .env;
+      fi &&
+      python manage.py runserver 0.0.0.0:8000
+      "

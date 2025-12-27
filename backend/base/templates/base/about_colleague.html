@@ -1,0 +1,271 @@
+<!-- section -->
+<div class="section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 center">
+                <div class="full">
+                    <div class="heading_main">
+                        <div>
+                            <p class="small_tag">Our team</p>
+                            <h2>
+                                <span class="theme_color">{{ about.head3 }}</span>
+                            </h2>
+                            {% if about.head3.text != None %}<p class="large">{{ about.head3_text }}</p>{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top_30">
+            <div class="col-lg-12 margin-top_30">
+                <div id="team_slider" class="carousel slide" data-ride="carousel">
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        {% if about.about_team.all.count >= 3 %}
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="full">
+                                            <div class="full team_member_img text_align_center">
+                                                <img src="{{ about.about_team.all.0.img }}" alt="#" />
+                                                <div class="social_icon_team">
+                                                    <ul class="social_icon">
+                                                        {% if about.about_team.all.0.fb %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.0.fb }}"><i class="fa fa-facebook-f"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.0.twitter %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.0.twitter }}"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.0.ln %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.0.ln }}"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.0.google %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.0.google }}"><i class="fa fa-google-plus"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <h3>{{ about.about_team.all.0.name }}</h3>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <p>{{ about.about_team.all.0.bio }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="full">
+                                            <div class="full team_member_img text_align_center">
+                                                <img src="{{ about.about_team.all.1.img }}" alt="#" />
+                                                <div class="social_icon_team">
+                                                    <ul class="social_icon">
+                                                        {% if about.about_team.all.1.fb %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.1.fb }}"><i class="fa fa-facebook-f"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.1.twitter %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.1.twitter }}"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.1.ln %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.1.ln }}"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.1.google %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.1.google }}"><i class="fa fa-google-plus"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <h3>{{ about.about_team.all.1.name }}</h3>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <p>{{ about.about_team.all.1.bio }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="full">
+                                            <div class="full team_member_img text_align_center">
+                                                <img src="{{ about.about_team.all.2.img }}" alt="#" />
+                                                <div class="social_icon_team">
+                                                    <ul class="social_icon">
+                                                        {% if about.about_team.all.2.fb %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.2.fb }}"><i class="fa fa-facebook-f"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.2.twitter %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.2.twitter }}"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.2.ln %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.2.ln }}"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.2.google %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.2.google }}"><i class="fa fa-google-plus"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <h3>{{ about.about_team.all.2.name }}</h3>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <p>{{ about.about_team.all.2.bio }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if about.about_team.all.count >= 6 %}
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="full">
+                                            <div class="full team_member_img text_align_center">
+                                                <img src="{{ about.about_team.all.3.img }}" alt="#" />
+                                                <div class="social_icon_team">
+                                                    <ul class="social_icon">
+                                                        {% if about.about_team.all.3.fb %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.3.fb }}"><i class="fa fa-facebook-f"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.3.twitter %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.3.twitter }}"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.3.ln %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.3.ln }}"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.3.google %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.3.google }}"><i class="fa fa-google-plus"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <h3>{{ about.about_team.all.3.name }}</h3>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <p>{{ about.about_team.all.3.bio }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="full">
+                                            <div class="full team_member_img text_align_center">
+                                                <img src="{{ about.about_team.all.4.img }}" alt="#" />
+                                                <div class="social_icon_team">
+                                                    <ul class="social_icon">
+                                                        {% if about.about_team.all.4.fb %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.4.fb }}"><i class="fa fa-facebook-f"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.4.twitter %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.4.twitter }}"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.4.ln %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.4.ln }}"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.4.google %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.4.google }}"><i class="fa fa-google-plus"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <h3>{{ about.about_team.all.4.name }}</h3>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <p>{{ about.about_team.all.4.bio }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="full">
+                                            <div class="full team_member_img text_align_center">
+                                                <img src="{{ about.about_team.all.5.img }}" alt="#" />
+                                                <div class="social_icon_team">
+                                                    <ul class="social_icon">
+                                                        {% if about.about_team.all.5.fb %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.5.fb }}"><i class="fa fa-facebook-f"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.5.twitter %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.5.twitter }}"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.5.ln %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.5.ln }}"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if about.about_team.all.5.google %}
+                                                            <li>
+                                                                <a href="{{ about.about_team.all.5.google }}"><i class="fa fa-google-plus"></i></a>
+                                                            </li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <h3>{{ about.about_team.all.5.name }}</h3>
+                                            </div>
+                                            <div class="full text_align_center">
+                                                <p>{{ about.about_team.all.5.bio }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="bullets">
+                        <!-- Indicators -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#team_slider" data-slide-to="0" class="active"></li>
+                            <li data-target="#team_slider" data-slide-to="1"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->

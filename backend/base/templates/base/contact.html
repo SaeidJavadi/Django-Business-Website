@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block body %}
+    <!-- Start Banner -->
+    <div class="section inner_page_header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="full">
+                        <h3>Contact us</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Banner -->
+    <!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full"
+                         style="float: right;
+                                display: block">
+                        <div class="heading_main text_align_left">
+                            <div class="right">
+                                <h2>
+                                    <span class="theme_color">{{ footer.head }}</span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row margin-top_30">
+                <div class="col-lg-5 col-sm-5 col-xs-12 margin-top_30">
+                    <div class="left-contact">
+                        <div class="media cont-line">
+                            <div class="media-left icon-b">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body dit-right">
+                                <h4>Address</h4>
+                                <p>{{ footer.address }}</p>
+                            </div>
+                        </div>
+                        <div class="media cont-line">
+                            <div class="media-left icon-b">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body dit-right">
+                                <h4>Email</h4>
+                                <a href="#">{{ footer.email }}</a>
+                            </div>
+                        </div>
+                        <div class="media cont-line">
+                            <div class="media-left icon-b">
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body dit-right">
+                                <h4>Contact number</h4>
+                                <a href="#">{{ footer.phone }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-sm-7 col-xs-12 margin-top_30">
+                    <div class="contact-block">
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form.name }}
+                                        {{ form.name.errors }}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form.email }}
+                                        {{ form.email.errors }}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form.phone }}
+                                        {{ form.phone.errors }}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form.message }}
+                                        {{ form.message.errors }}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="submit-button text-center">
+                                        <button class="btn btn-common" id="submit" type="submit">Send Me</button>
+                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+{% endblock body %}

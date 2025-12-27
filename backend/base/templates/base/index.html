@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+    Django Business Website
+{% endblock title %}
+{% block head %}
+{% endblock head %}
+{% block body %}
+    <!-- Start Banner -->
+    <div class="ulockd-home-slider">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="pogoSlider" id="js-main-slider">
+                    {% for bnr in header.header_banner.all %}
+                        <div class="pogoSlider-slide"
+                             style="background-image:url({{ bnr.banner }})">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="slide_text" dir="auto">
+                                            <h3>{{ bnr.head1 }}</h3>
+                                            <br>
+                                            <h4>
+                                                <span class="theme_color">{{ bnr.head2 }}</span>
+                                            </h4>
+                                            <br>
+                                            <p>{{ bnr.head2_text }}</p>
+                                            <a class="contact_bt" href="{% url 'base:about' %}">About us</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- .pogoSlider -->
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+    {% include 'base/about_head.html' with about=about %}
+    {% include 'base/services_tools.html' with service=service %}
+    {% include 'base/about_team.html' with about=about %}
+    {% include 'base/service_counter.html' with service=service %}
+    {% include 'base/about_colleague.html' with about=about %}
+{% endblock %}

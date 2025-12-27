@@ -1,0 +1,40 @@
+{% load custom_tags %}
+<!-- section -->
+<div class="section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 center">
+                <div>
+                    <div class="heading_main text_align_left">
+                        <div class="right">
+                            <p class="small_tag">Services</p>
+                            <h2>
+                                <span class="theme_color">{{ service.head1 }}</span>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top_30">
+            {% if service.service_tools.all.count > 0 %}
+                {% for serviceTool in service.service_tools.all %}
+                    <div class="col-sm-6 col-md-4">
+                        <div class="service_blog">
+                            <div class="service_icons">
+                                <img width="75" height="75" src="{{ serviceTool.avator }}" alt="#">
+                            </div>
+                            <div class="full">
+                                <h4>{{ serviceTool.head_service }}</h4>
+                            </div>
+                            <div class="full">
+                                <p>{{ serviceTool.text_service }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- end section -->

@@ -6,3 +6,6 @@ venv/
 zTemp/
 logs/
 staticfiles/
+.env
+.vscode/
+*.Identifier
