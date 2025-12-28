@@ -2,7 +2,7 @@
 
 ## Demo Video
 
-https://github.com/user-attachments/assets/5db8cc4b-e56c-47fc-a4fc-03df5ebc16f2
+https://github.com/user-attachments/assets/8c578c02-c54e-4ec0-b795-6f3c4031d021
 
 A professional business website built using Django, providing features for managing business operations such as client contact forms, newsletters, and more. This project demonstrates how to use Django in building a fully functional business website with modern features.
 
